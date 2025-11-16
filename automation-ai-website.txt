@@ -1,0 +1,7 @@
+automation-ai-website/
+│
+├── style.css
+├── index.php
+├── functions.php
+├── contact-form.js
+└── README.md
