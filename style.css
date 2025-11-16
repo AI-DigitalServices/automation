@@ -495,6 +495,31 @@ textarea:focus {
     color: white;
     font-size: 1.2rem;
 }
+/* Form Validation Styles */
+input:invalid, textarea:invalid {
+    border-color: #ff4444;
+}
+
+input:valid, textarea:valid {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-error {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spin {
+    animation: spin 1s linear infinite;
+}
 
 /* Footer */
 footer {
