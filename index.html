@@ -828,18 +828,46 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <!-- Custom wrapper for Airtable form -->
-                <div id="airtable-form-container">
-                    <iframe 
-                        class="airtable-embed" 
-                        src="https://airtable.com/embed/appR9wJFpSA13BSAs/pagXCDTuXcWC9iapM/form?backgroundColor=rgba" 
-                        frameborder="0" 
-                        onmousewheel="" 
-                        width="100%" 
-                        height="500" 
-                        style="background: transparent; border: 1px solid rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1); border-radius: 15px;">
-                    </iframe>
-                </div>
+                <!-- Your existing website form - STILL WORKS -->
+                <form id="lead-form" action="https://formspree.io/f/xqawjpna" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we help you? *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I agree to receive communications from Automation.Ai</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" id="submit-btn">
+                        <span class="btn-text">Get Started</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Processing...
+                        </span>
+                    </button>
+                </form>
+                <div id="form-message" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px;"></div>
             </div>
             <div class="contact-info">
                 <div class="contact-method">
@@ -848,7 +876,13 @@
                     </div>
                     <div>
                         <h3>Email Us</h3>
-                        <p>automation@ai-digitalservices.com</p>
+                        <!-- Clickable email that opens Airtable form -->
+                        <p>
+                            <a href="#" id="email-form-trigger" style="color: var(--primary); text-decoration: none;">
+                                automation@ai-digitalservices.com
+                            </a>
+                        </p>
+                        <small style="color: var(--gray);">Click to open quick contact form</small>
                     </div>
                 </div>
                 <div class="contact-method">
@@ -874,33 +908,156 @@
     </div>
 </section>
 
+<!-- Modal for Airtable Form -->
+<div id="airtable-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+    <div style="background: var(--dark); padding: 30px; border-radius: 15px; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; position: relative;">
+        <button id="close-modal" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--light); font-size: 1.5rem; cursor: pointer;">×</button>
+        <h3 style="margin-bottom: 20px; color: var(--primary);">Quick Contact Form</h3>
+        <iframe 
+            id="airtable-iframe"
+            class="airtable-embed" 
+            src="https://airtable.com/embed/appR9wJFpSA13BSAs/pagXCDTuXcWC9iapM/form" 
+            frameborder="0" 
+            onmousewheel="" 
+            width="100%" 
+            height="500" 
+            style="background: transparent; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+        </iframe>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray); text-align: center;">
+            This form submits directly to our Airtable database
+        </p>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ===== WEBSITE FORM FUNCTIONALITY =====
+    const leadForm = document.getElementById('lead-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const formMessage = document.getElementById('form-message');
+    
+    // Your website form submission (using Formspree as example)
+    leadForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-block';
+        submitBtn.disabled = true;
+        formMessage.style.display = 'none';
+        
+        // Get form data
+        const formData = new FormData(leadForm);
+        
+        try {
+            // Using Formspree as example - replace with your preferred service
+            const response = await fetch(leadForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                showMessage('Thank you for your interest! We will contact you shortly.', 'success');
+                leadForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+            
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showMessage('Sorry, there was an error submitting your form. Please try again or contact us directly.', 'error');
+        } finally {
+            // Reset button state
+            btnText.style.display = 'inline-block';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+    
+    function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.style.display = 'block';
+        formMessage.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1)';
+        formMessage.style.border = type === 'success' ? '1px solid #00ff88' : '1px solid #ff4444';
+        formMessage.style.color = type === 'success' ? '#00ff88' : '#ff4444';
+    }
+    
+    // ===== AIRTABLE MODAL FUNCTIONALITY =====
+    const emailTrigger = document.getElementById('email-form-trigger');
+    const airtableModal = document.getElementById('airtable-modal');
+    const closeModal = document.getElementById('close-modal');
+    const airtableIframe = document.getElementById('airtable-iframe');
+    
+    // Your Airtable form URL - replace with your actual form URL
+    const AIRTABLE_FORM_BASE_URL = 'https://airtable.com/embed/appR9wJFpSA13BSAs/pagXCDTuXcWC9iapM/form';
+    
+    // Open modal when email is clicked
+    emailTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        airtableModal.style.display = 'flex';
+        // Reset to base form URL
+        airtableIframe.src = AIRTABLE_FORM_BASE_URL;
+    });
+    
+    // Close modal
+    closeModal.addEventListener('click', function() {
+        airtableModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    airtableModal.addEventListener('click', function(e) {
+        if (e.target === airtableModal) {
+            airtableModal.style.display = 'none';
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            airtableModal.style.display = 'none';
+        }
+    });
+});
+</script>
+
 <style>
-/* Custom styles for Airtable form to match your theme */
-.airtable-embed {
-    background: linear-gradient(145deg, #1a1a1a, #ff4444) !important;
-    border: 1px solid rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1) !important;
-    border-radius: 15px !important;
+/* Modal styles */
+#airtable-modal {
+    backdrop-filter: blur(5px);
 }
 
-/* Override Airtable's default styles */
-#airtable-form-container ::placeholder {
-    color: var(--rgba(255, 255, 255, 0.1) !important;
+/* Email link hover effects */
+#email-form-trigger:hover {
+    color: var(--secondary) !important;
+    text-decoration: underline !important;
 }
 
-#airtable-form-container input,
-#airtable-form-container textarea {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: var(--light) !important;
-    border-radius: 8px !important;
+/* Responsive modal */
+@media (max-width: 768px) {
+    #airtable-modal > div {
+        width: 95%;
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    #airtable-iframe {
+        height: 400px;
+    }
 }
 
-#airtable-form-container button {
-    background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 30px !important;
-    padding: 12px 30px !important;
+/* Ensure both forms look good */
+.contact-form {
+    position: relative;
+    z-index: 1;
+}
+
+#airtable-modal {
+    z-index: 10000;
 }
 </style>
 
@@ -934,7 +1091,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Automation.Ai. All rights reserved.</p>
+                <p>&copy; 2025 Automation.Ai. All rights reserved.</p>
             </div>
         </div>
     </footer>
