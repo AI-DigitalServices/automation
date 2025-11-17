@@ -828,45 +828,10 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <form id="lead-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">How can we help you? *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I agree to receive communications from Automation.Ai</label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn" id="submit-btn">
-                        <span class="btn-text">Get Started</span>
-                        <span class="btn-loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Processing...
-                        </span>
-                    </button>
-                </form>
-                <div id="form-message" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px;"></div>
+                <!-- Custom wrapper for Airtable form -->
+                <div id="airtable-form-container">
+                    <iframe class="airtable-embed" src="https://airtable.com/embed/appR9wJFpSA13BSAs/pagGEKOuXOtwpDGhe/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                </div>
             </div>
             <div class="contact-info">
                 <div class="contact-method">
@@ -901,81 +866,35 @@
     </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const leadForm = document.getElementById('lead-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-    const formMessage = document.getElementById('form-message');
-    
-    // Airtable Configuration - UPDATE THESE VALUES
-    const AIRTABLE_BASE_ID = 'appR9wJFpSA13BSAs';
-    const AIRTABLE_TABLE_NAME = 'Automation.Ai_Leads';
-    const AIRTABLE_API_KEY = 'patdosEFI3L8LLiiN';
-    
-    leadForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline-block';
-        submitBtn.disabled = true;
-        
-        // Hide previous messages
-        formMessage.style.display = 'none';
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            company: document.getElementById('company').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            message: document.getElementById('message').value,
-            timestamp: new Date().toISOString(),
-            source: 'Website Contact Form'
-        };
-        
-        try {
-            // Send to Airtable
-            const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    fields: formData
-                })
-            });
-            
-            if (response.ok) {
-                showMessage('Thank you for your interest! We will contact you shortly.', 'success');
-                leadForm.reset();
-            } else {
-                throw new Error('Failed to submit form');
-            }
-            
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            showMessage('Sorry, there was an error submitting your form. Please try again or contact us directly.', 'error');
-        } finally {
-            // Reset button state
-            btnText.style.display = 'inline-block';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }
-    });
-    
-    function showMessage(message, type) {
-        formMessage.textContent = message;
-        formMessage.style.display = 'block';
-        formMessage.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1)';
-        formMessage.style.border = type === 'success' ? '1px solid #00ff88' : '1px solid #ff4444';
-        formMessage.style.color = type === 'success' ? '#00ff88' : '#ff4444';
-    }
-});
-</script>
+<style>
+/* Custom styles for Airtable form to match your theme */
+.airtable-embed {
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 15px !important;
+}
+
+/* Override Airtable's default styles */
+#airtable-form-container ::placeholder {
+    color: var(--gray) !important;
+}
+
+#airtable-form-container input,
+#airtable-form-container textarea {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--light) !important;
+    border-radius: 8px !important;
+}
+
+#airtable-form-container button {
+    background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 30px !important;
+    padding: 12px 30px !important;
+}
+</style>
 
 <style>
 .checkbox-group {
