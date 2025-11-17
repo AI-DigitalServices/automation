@@ -830,7 +830,15 @@
             <div class="contact-form">
                 <!-- Custom wrapper for Airtable form -->
                 <div id="airtable-form-container">
-                    <iframe class="airtable-embed" src="https://airtable.com/embed/appR9wJFpSA13BSAs/pagGEKOuXOtwpDGhe/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                    <iframe 
+                        class="airtable-embed" 
+                        src="https://airtable.com/embed/appR9wJFpSA13BSAs/pagGEKOuXOtwpDGhe/form?backgroundColor=gray" 
+                        frameborder="0" 
+                        onmousewheel="" 
+                        width="100%" 
+                        height="533" 
+                        style="background: transparent; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;">
+                    </iframe>
                 </div>
             </div>
             <div class="contact-info">
@@ -893,36 +901,6 @@
     border: none !important;
     border-radius: 30px !important;
     padding: 12px 30px !important;
-}
-</style>
-
-<style>
-.checkbox-group {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.checkbox-group input[type="checkbox"] {
-    margin-top: 3px;
-}
-
-.checkbox-group label {
-    font-size: 0.9rem;
-    color: var(--gray);
-    line-height: 1.4;
-}
-
-#submit-btn {
-    position: relative;
-    min-width: 140px;
-}
-
-.btn-loading {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 </style>
 
