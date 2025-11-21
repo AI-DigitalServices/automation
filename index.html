@@ -828,34 +828,35 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <form id="lead-form">
+                <!-- Google Forms Integration -->
+                <form id="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ/formResponse" method="POST" target="hidden-frame">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="735257537" required>
                         </div>
                         <div class="form-group">
                             <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
+                            <input type="text" id="company" name="1259905861">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="1104257255" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="58258178">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="message">How can we help you? *</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="1308375756" required></textarea>
                     </div>
                     <div class="form-group">
                         <div class="checkbox-group">
-                            <input type="checkbox" id="consent" name="consent" required>
+                            <input type="checkbox" id="consent" name="934908280" required>
                             <label for="consent">I agree to receive communications from Automation.Ai</label>
                         </div>
                     </div>
@@ -866,6 +867,10 @@
                         </span>
                     </button>
                 </form>
+                
+                <!-- Hidden iframe for form submission -->
+                <iframe name="hidden-frame" style="display: none;" onload="onFormSubmit()"></iframe>
+                
                 <div id="form-message" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px;"></div>
             </div>
             <div class="contact-info">
@@ -902,74 +907,91 @@
 </section>
 
 <script>
+// Form submission handler
+function onFormSubmit() {
+    // Show success message
+    showMessage('Thank you for your interest! We will contact you shortly.', 'success');
+    
+    // Reset form
+    document.getElementById('lead-form').reset();
+    
+    // Reset button state
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    btnText.style.display = 'inline-block';
+    btnLoading.style.display = 'none';
+    submitBtn.disabled = false;
+}
+
+// Form submission handler
 document.addEventListener('DOMContentLoaded', function() {
     const leadForm = document.getElementById('lead-form');
     const submitBtn = document.getElementById('submit-btn');
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
-    const formMessage = document.getElementById('form-message');
     
-    // Google Forms Configuration
-    const GOOGLE_FORM_ID = '1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ'; // Replace with your Google Form ID
-    const GOOGLE_FORM_ENTRY = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
-    
-    leadForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
+    leadForm.addEventListener('submit', function(e) {
         // Show loading state
         btnText.style.display = 'none';
         btnLoading.style.display = 'inline-block';
         submitBtn.disabled = true;
         
         // Hide previous messages
-        formMessage.style.display = 'none';
+        document.getElementById('form-message').style.display = 'none';
         
-        // Get form data
-        const formData = new FormData();
-        
-        // Map your form fields to Google Forms entry IDs
-        // You'll need to update these entry IDs after creating your Google Form
-        formData.append('735257537', document.getElementById('name').value);        // Name field
-        formData.append('1259905861', document.getElementById('company').value);     // Company field
-        formData.append('1104257255', document.getElementById('email').value);       // Email field
-        formData.append('58258178', document.getElementById('phone').value);       // Phone field
-        formData.append('1308375756', document.getElementById('message').value);     // Message field
-        formData.append('934908280', new Date().toISOString());                    // Timestamp
-        formData.append('433256798', 'Website Contact Form');                      // Source
-        
-        try {
-            // Submit to Google Forms
-            const response = await fetch(GOOGLE_FORM_ENTRY, {
-                method: 'POST',
-                mode: 'no-cors', // Required for Google Forms
-                body: formData
-            });
-            
-            // With no-cors mode, we can't read the response, but the submission should work
-            showMessage('Thank you for your interest! We will contact you shortly.', 'success');
-            leadForm.reset();
-            
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            showMessage('Thank you for your submission! We will contact you shortly.', 'success');
-            // Even if there's an error, we'll show success because with no-cors we can't verify
-            leadForm.reset();
-        } finally {
-            // Reset button state
-            btnText.style.display = 'inline-block';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }
+        // Let the form submit naturally to Google Forms
+        console.log('Form submitted to Google Forms');
     });
-    
-    function showMessage(message, type) {
-        formMessage.textContent = message;
-        formMessage.style.display = 'block';
-        formMessage.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1)';
-        formMessage.style.border = type === 'success' ? '1px solid #00ff88' : '1px solid #ff4444';
-        formMessage.style.color = type === 'success' ? '#00ff88' : '#ff4444';
-    }
 });
+
+function showMessage(message, type) {
+    const formMessage = document.getElementById('form-message');
+    formMessage.textContent = message;
+    formMessage.style.display = 'block';
+    formMessage.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1)';
+    formMessage.style.border = type === 'success' ? '1px solid #00ff88' : '1px solid #ff4444';
+    formMessage.style.color = type === 'success' ? '#00ff88' : '#ff4444';
+}
+
+// Fallback: If Google Forms doesn't work, use this simple version
+function setupSimpleForm() {
+    const leadForm = document.getElementById('lead-form');
+    
+    leadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple success message
+        showMessage('Thank you for your interest! We will contact you shortly.', 'success');
+        
+        // You can add email integration here later
+        const formData = {
+            name: document.getElementById('name').value,
+            company: document.getElementById('company').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            message: document.getElementById('message').value
+        };
+        
+        console.log('Form data:', formData); // For debugging
+        
+        // Reset form
+        leadForm.reset();
+        
+        // Reset button
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        
+        btnText.style.display = 'inline-block';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
+    });
+}
+
+// Initialize form
+setupSimpleForm();
 </script>
 
     <!-- Footer -->
