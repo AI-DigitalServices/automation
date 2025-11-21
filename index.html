@@ -828,51 +828,58 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <!-- Google Forms Integration -->
-                <form id="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ/viewform" method="POST" target="hidden-frame">
-                                        <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="entry.735257537" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="entry.1259905861">
-                        </div>
+                <!-- Google Form -->
+                <form id="lead-form" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/formResponse" method="POST" target="hidden-frame">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="entry.123456789" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="entry.1104257255" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="entry.58258178">
-                        </div>
+                    
+                    <!-- Company -->
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="entry.987654321">
                     </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="entry.555555555" required>
+                    </div>
+                    
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="entry.444444444">
+                    </div>
+                    
+                    <!-- Message -->
                     <div class="form-group">
                         <label for="message">How can we help you? *</label>
-                        <textarea id="message" name="entry.1308375756" required></textarea>
+                        <textarea id="message" name="entry.333333333" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="consent" name="entry.123456789" required>
-                            <label for="consent">I agree to receive communications from Automation.Ai</label>
-                        </div>
-                    </div>
+                    
+                    <!-- Hidden Source Field -->
+                    <input type="hidden" name="entry.222222222" value="Website Contact Form">
+                    
+                    <!-- Hidden Timestamp -->
+                    <input type="hidden" name="entry.111111111" value="" id="timestamp">
+                    
                     <button type="submit" class="btn" id="submit-btn">
-                        <span class="btn-text">Get Started</span>
-                        <span class="btn-loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Processing...
-                        </span>
+                        Get Started
                     </button>
                 </form>
-                
+
                 <!-- Hidden iframe for form submission -->
-                <iframe name="hidden-frame" style="display: none;" onload="onFormSubmit()"></iframe>
+                <iframe name="hidden-frame" id="hidden-frame" style="display: none;"></iframe>
                 
-                <div id="form-message" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px;"></div>
+                <!-- Success Message -->
+                <div id="form-success" style="display: none; margin-top: 20px; padding: 15px; background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; border-radius: 8px;">
+                    Thank you for your interest! We will contact you shortly.
+                </div>
             </div>
+            
             <div class="contact-info">
                 <div class="contact-method">
                     <div class="contact-icon">
@@ -880,7 +887,7 @@
                     </div>
                     <div>
                         <h3>Email Us</h3>
-                        <p>automation@ai-digitalservices.com</p>
+                        <p>automation@ai-digital.services.com</p>
                     </div>
                 </div>
                 <div class="contact-method">
@@ -907,93 +914,37 @@
 </section>
 
 <script>
-// Form submission handler
-function onFormSubmit() {
-    // Show success message
-    showMessage('Thank you for your interest! We will contact you shortly.', 'success');
-    
-    // Reset form
-    document.getElementById('lead-form').reset();
-    
-    // Reset button state
-    const submitBtn = document.getElementById('submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-    
-    btnText.style.display = 'inline-block';
-    btnLoading.style.display = 'none';
-    submitBtn.disabled = false;
-}
-
-// Form submission handler
 document.addEventListener('DOMContentLoaded', function() {
-    const leadForm = document.getElementById('lead-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const form = document.getElementById('lead-form');
+    const successMessage = document.getElementById('form-success');
+    const hiddenFrame = document.getElementById('hidden-frame');
     
-    leadForm.addEventListener('submit', function(e) {
-        // Show loading state
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline-block';
-        submitBtn.disabled = true;
+    // Set timestamp when page loads
+    document.getElementById('timestamp').value = new Date().toISOString();
+    
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+        // Update timestamp on submit
+        document.getElementById('timestamp').value = new Date().toISOString();
         
-        // Hide previous messages
-        document.getElementById('form-message').style.display = 'none';
-        
-        // Let the form submit naturally to Google Forms
-        console.log('Form submitted to Google Forms');
+        // Hide form and show success message after a delay
+        setTimeout(function() {
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+        }, 1000);
+    });
+    
+    // Optional: Reset form when navigating back to contact section
+    window.addEventListener('hashchange', function() {
+        if (window.location.hash === '#contact') {
+            form.style.display = 'block';
+            successMessage.style.display = 'none';
+            form.reset();
+        }
     });
 });
-
-function showMessage(message, type) {
-    const formMessage = document.getElementById('form-message');
-    formMessage.textContent = message;
-    formMessage.style.display = 'block';
-    formMessage.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1)';
-    formMessage.style.border = type === 'success' ? '1px solid #00ff88' : '1px solid #ff4444';
-    formMessage.style.color = type === 'success' ? '#00ff88' : '#ff4444';
-}
-
-// Fallback: If Google Forms doesn't work, use this simple version
-function setupSimpleForm() {
-    const leadForm = document.getElementById('lead-form');
-    
-    leadForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Simple success message
-        showMessage('Thank you for your interest! We will contact you shortly.', 'success');
-        
-        // You can add email integration here later
-        const formData = {
-            name: document.getElementById('name').value,
-            company: document.getElementById('company').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            message: document.getElementById('message').value
-        };
-        
-        console.log('Form data:', formData); // For debugging
-        
-        // Reset form
-        leadForm.reset();
-        
-        // Reset button
-        const submitBtn = document.getElementById('submit-btn');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const btnLoading = submitBtn.querySelector('.btn-loading');
-        
-        btnText.style.display = 'inline-block';
-        btnLoading.style.display = 'none';
-        submitBtn.disabled = false;
-    });
-}
-
-// Initialize form
-setupSimpleForm();
 </script>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container">
