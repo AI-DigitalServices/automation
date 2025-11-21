@@ -929,13 +929,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Map your form fields to Google Forms entry IDs
         // You'll need to update these entry IDs after creating your Google Form
-        formData.append('entry.735257537', document.getElementById('name').value);        // Name field
-        formData.append('entry.1259905861', document.getElementById('company').value);     // Company field
-        formData.append('entry.1104257255', document.getElementById('email').value);       // Email field
-        formData.append('entry.58258178', document.getElementById('phone').value);       // Phone field
-        formData.append('entry.1308375756', document.getElementById('message').value);     // Message field
-        formData.append('entry.934908280', new Date().toISOString());                    // Timestamp
-        formData.append('entry.433256798', 'Website Contact Form');                      // Source
+        formData.append('735257537', document.getElementById('name').value);        // Name field
+        formData.append('1259905861', document.getElementById('company').value);     // Company field
+        formData.append('1104257255', document.getElementById('email').value);       // Email field
+        formData.append('58258178', document.getElementById('phone').value);       // Phone field
+        formData.append('1308375756', document.getElementById('message').value);     // Message field
+        formData.append('934908280', new Date().toISOString());                    // Timestamp
+        formData.append('433256798', 'Website Contact Form');                      // Source
         
         try {
             // Submit to Google Forms
