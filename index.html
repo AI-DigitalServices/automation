@@ -938,54 +938,59 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnLoading = submitBtn.querySelector('.btn-loading');
     const formMessage = document.getElementById('form-message');
     
-    // Your website form submission (using Formspree as example)
-    leadForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline-block';
-        submitBtn.disabled = true;
-        formMessage.style.display = 'none';
-        
-        // Get form data
-        const formData = new FormData(leadForm);
-        
-        try {
-            // Using Formspree as example - replace with your preferred service
-            const response = await fetch(leadForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            
-            if (response.ok) {
-                showMessage('Thank you for your interest! We will contact you shortly.', 'success');
-                leadForm.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-            
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showMessage('Sorry, there was an error submitting your form. Please try again or contact us directly.', 'error');
-        } finally {
-            // Reset button state
-            btnText.style.display = 'inline-block';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }
+// Google Forms Configuration - UPDATE THESE
+const GOOGLE_FORM_ID = '1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ'; // Replace with your form ID
+
+// Field mapping - UPDATE THESE ENTRY IDs
+const FIELD_MAPPING = {
+    name: '735257537',      // Replace with your Name field ID
+    company: '1259905861',   // Replace with your Company field ID  
+    email: '1104257255',     // Replace with your Email field ID
+    phone: '58258178',     // Replace with your Phone field ID
+    message: '1308375756'    // Replace with your Message field ID
+};
+
+leadForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Create hidden form and submit
+    const hiddenForm = document.createElement('form');
+    hiddenForm.style.display = 'none';
+    hiddenForm.method = 'POST';
+    hiddenForm.action = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+    
+    // Add all fields to hidden form
+    Object.keys(FIELD_MAPPING).forEach(field => {
+        const input = document.createElement('input');
+        input.name = FIELD_MAPPING[field];
+        input.value = document.getElementById(field).value;
+        hiddenForm.appendChild(input);
     });
     
-    function showMessage(message, type) {
-        formMessage.textContent = message;
-        formMessage.style.display = 'block';
-        formMessage.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 0, 0, 0.1)';
-        formMessage.style.border = type === 'success' ? '1px solid #00ff88' : '1px solid #ff4444';
-        formMessage.style.color = type === 'success' ? '#00ff88' : '#ff4444';
-    }
+    // Add timestamp and source
+    const timestamp = document.createElement('input');
+    timestamp.name = '934908280'; // Replace with your timestamp field ID
+    timestamp.value = new Date().toISOString();
+    hiddenForm.appendChild(timestamp);
+    
+    const source = document.createElement('input');
+    source.name = '433256798'; // Replace with your source field ID
+    source.value = 'Website Contact Form';
+    hiddenForm.appendChild(source);
+    
+    // Submit the form
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+    
+    // Show success message
+    showMessage('Thank you for your interest! We will contact you shortly.', 'success');
+    leadForm.reset();
+    
+    // Clean up
+    setTimeout(() => {
+        document.body.removeChild(hiddenForm);
+    }, 1000);
+});
     
     // ===== AIRTABLE MODAL FUNCTIONALITY =====
     const emailTrigger = document.getElementById('email-form-trigger');
