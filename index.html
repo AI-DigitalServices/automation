@@ -820,6 +820,7 @@
     </section>
 
 <!-- Contact Section -->
+<!-- Contact Section -->
 <section id="contact" class="contact">
     <div class="container">
         <div class="section-header">
@@ -829,16 +830,9 @@
         <div class="contact-container">
             <div class="contact-form">
                 <!-- HubSpot Form Container -->
-                <div id="hubspot-form">
-                    <!-- Loading state -->
-                    <div class="form-loading" style="text-align: center; padding: 40px;">
-                        <div style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </div>
-                        <p>Loading contact form...</p>
-                    </div>
-                </div>
+                <div id="hubspot-form"></div>
             </div>
+            
             <div class="contact-info">
                 <div class="contact-method">
                     <div class="contact-icon">
@@ -872,165 +866,10 @@
     </div>
 </section>
 
-<!-- Add this script right before closing body tag -->
-<script>
-// Wait for all resources to load
-window.addEventListener('load', function() {
-    // Load HubSpot forms script dynamically
-    const script = document.createElement('script');
-    script.charset = 'utf-8';
-    script.type = 'text/javascript';
-    script.src = '//js.hsforms.net/forms/v2.js';
-    
-    script.onload = function() {
-        // Initialize HubSpot form after script loads
-        setTimeout(initializeHubspotForm, 1000);
-    };
-    
-    document.head.appendChild(script);
-});
-
-function initializeHubspotForm() {
-    if (window.hbspt) {
-        hbspt.forms.create({
-            region: "na1",
-            portalId: "143905522", // Replace with your actual portal ID
-            formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0",     // Replace with your actual form ID
-            target: "#hubspot-form",
-            onFormReady: function($form) {
-                console.log('HubSpot form loaded successfully!');
-                applyCustomStyles();
-            },
-            onFormSubmitted: function($form) {
-                // Custom success handling
-                setTimeout(function() {
-                    document.getElementById('hubspot-form').innerHTML = `
-                        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 30px; border-radius: 8px; text-align: center;">
-                            <h3 style="color: #00ff88; margin-bottom: 15px;">Thank You!</h3>
-                            <p>We've received your message and will contact you shortly.</p>
-                        </div>
-                    `;
-                }, 1500);
-            }
-        });
-    } else {
-        console.error('HubSpot forms script not loaded');
-        showFallbackForm();
-    }
-}
-
-function applyCustomStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        /* HubSpot Form Styling */
-        .hs-form fieldset {
-            max-width: 100% !important;
-            width: 100% !important;
-        }
-        
-        .hs-form-field {
-            margin-bottom: 20px !important;
-            width: 100% !important;
-        }
-        
-        .hs-input {
-            width: 100% !important;
-            padding: 12px 15px !important;
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 8px !important;
-            color: #f8f9fa !important;
-            font-size: 1rem !important;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-        }
-        
-        .hs-input:focus {
-            outline: none !important;
-            border-color: #00d4ff !important;
-            background: rgba(0, 212, 255, 0.05) !important;
-        }
-        
-        .hs-button {
-            background: linear-gradient(90deg, #00d4ff, #7928ca) !important;
-            color: white !important;
-            border: none !important;
-            border-radius: 30px !important;
-            padding: 12px 30px !important;
-            font-weight: 600 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-            width: auto !important;
-        }
-        
-        .hs-button:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-        }
-        
-        .hs-form label {
-            color: #f8f9fa !important;
-            margin-bottom: 8px !important;
-            display: block !important;
-            font-weight: 500 !important;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-        }
-        
-        .hs-error-msgs label {
-            color: #ff4444 !important;
-            font-size: 0.8rem !important;
-            margin-top: 5px !important;
-        }
-        
-        .legal-consent-container {
-            color: #6c757d !important;
-            font-size: 0.9rem !important;
-        }
-        
-        /* Form layout adjustments */
-        .hs-form .form-columns-2 .hs-form-field {
-            width: 48% !important;
-            display: inline-block !important;
-            margin-right: 4% !important;
-        }
-        
-        .hs-form .form-columns-2 .hs-form-field:nth-child(2n) {
-            margin-right: 0 !important;
-        }
-        
-        @media (max-width: 768px) {
-            .hs-form .form-columns-2 .hs-form-field {
-                width: 100% !important;
-                margin-right: 0 !important;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// Fallback if HubSpot fails
-function showFallbackForm() {
-    document.getElementById('hubspot-form').innerHTML = `
-        <div style="text-align: center; padding: 40px;">
-            <h3 style="color: #ff4444; margin-bottom: 20px;">Form Loading Issue</h3>
-            <p>Please contact us directly at:</p>
-            <p style="margin: 20px 0;">
-                <a href="mailto:automation@ai-digital.services.com" style="color: #00d4ff; text-decoration: none; font-weight: bold;">
-                    automation@ai-digital.services.com
-                </a>
-            </p>
-            <a href="mailto:automation@ai-digital.services.com?subject=Automation.Ai Inquiry&body=Hello, I'm interested in your services." class="btn">
-                <i class="fas fa-envelope"></i> Email Us Directly
-            </a>
-        </div>
-    `;
-}
-</script>
-    <!-- Add this right before </body> -->
+<!-- HubSpot Form Embed Script - Place before closing </body> tag -->
 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
 <script>
+// Wait for HubSpot script to load
 function initHubSpotForm() {
     if (typeof hbspt !== 'undefined' && hbspt.forms) {
         hbspt.forms.create({
@@ -1038,35 +877,300 @@ function initHubSpotForm() {
             portalId: "143905522",
             formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0",
             target: '#hubspot-form',
+            
+            // Custom CSS class
             cssClass: 'custom-hs-form',
             
+            // Callback when form renders
             onFormReady: function($form) {
-                console.log('Form loaded!');
+                console.log('HubSpot form loaded successfully!');
+                
+                // Remove loading message
+                const loadingMsg = document.querySelector('.form-loading');
+                if (loadingMsg) {
+                    loadingMsg.remove();
+                }
+                
+                // Apply custom styling
+                applyCustomStyles();
             },
             
+            // Callback on form submission
             onFormSubmitted: function($form) {
+                console.log('Form submitted successfully');
+                
+                // Show custom success message
                 setTimeout(function() {
                     document.getElementById('hubspot-form').innerHTML = `
-                        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 30px; border-radius: 8px; text-align: center;">
+                        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 30px; border-radius: 8px; text-align: center; animation: slideIn 0.5s ease-out;">
                             <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
                             <h3 style="color: #00ff88; margin-bottom: 15px;">Thank You!</h3>
-                            <p>We've received your message and will contact you shortly.</p>
+                            <p style="margin: 0;">We've received your message and will contact you shortly.</p>
                         </div>
                     `;
                 }, 500);
+                
+                // Track with Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submission', {
+                        'event_category': 'Contact',
+                        'event_label': 'HubSpot Lead Form'
+                    });
+                }
+                
+                // Track with Facebook Pixel
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead');
+                }
             }
         });
     } else {
+        // Retry if HubSpot hasn't loaded yet
         setTimeout(initHubSpotForm, 100);
     }
 }
 
+// Function to apply custom styling
+function applyCustomStyles() {
+    // Add custom styles to form elements
+    const formInputs = document.querySelectorAll('#hubspot-form input, #hubspot-form textarea, #hubspot-form select');
+    formInputs.forEach(input => {
+        if (input.type !== 'submit') {
+            input.style.cssText = `
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 2px solid rgba(255, 255, 255, 0.2) !important;
+                color: #fff !important;
+                border-radius: 8px !important;
+                padding: 12px 15px !important;
+            `;
+        }
+    });
+}
+
+// Initialize form when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initHubSpotForm);
 } else {
     initHubSpotForm();
 }
 </script>
+
+<style>
+/* ============================================
+   HUBSPOT FORM CUSTOM STYLING
+   ============================================ */
+
+/* Container styling */
+#hubspot-form {
+    width: 100%;
+    min-height: 400px;
+}
+
+/* Loading state */
+.form-loading {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-loading i {
+    font-size: 2rem;
+    color: #00ff88;
+    margin-bottom: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Form container */
+.custom-hs-form {
+    width: 100% !important;
+}
+
+.custom-hs-form .hs-form {
+    font-family: inherit !important;
+}
+
+/* Form fields */
+.custom-hs-form .hs-form-field {
+    margin-bottom: 20px !important;
+}
+
+/* Labels */
+.custom-hs-form .hs-form-field label {
+    display: block !important;
+    margin-bottom: 8px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+}
+
+.custom-hs-form .hs-form-field label .hs-form-required {
+    color: #00ff88 !important;
+}
+
+/* Input fields & Textarea */
+.custom-hs-form .hs-input,
+.custom-hs-form input[type="text"],
+.custom-hs-form input[type="email"],
+.custom-hs-form input[type="tel"],
+.custom-hs-form textarea,
+.custom-hs-form select {
+    width: 100% !important;
+    padding: 12px 15px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    transition: all 0.3s ease !important;
+    font-family: inherit !important;
+    box-sizing: border-box !important;
+}
+
+.custom-hs-form textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+}
+
+/* Focus state */
+.custom-hs-form .hs-input:focus,
+.custom-hs-form input:focus,
+.custom-hs-form textarea:focus,
+.custom-hs-form select:focus {
+    outline: none !important;
+    border-color: #00ff88 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1) !important;
+}
+
+/* Placeholder */
+.custom-hs-form .hs-input::placeholder,
+.custom-hs-form input::placeholder,
+.custom-hs-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Submit button */
+.custom-hs-form .hs-button,
+.custom-hs-form input[type="submit"],
+.custom-hs-form .hs-submit .actions input[type="submit"] {
+    background: linear-gradient(135deg, #00ff88, #00cc6a) !important;
+    color: #000 !important;
+    border: none !important;
+    padding: 15px 40px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin-top: 10px !important;
+}
+
+.custom-hs-form .hs-button:hover,
+.custom-hs-form input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3) !important;
+}
+
+/* Error messages */
+.custom-hs-form .hs-error-msgs {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 8px 0 0 0 !important;
+}
+
+.custom-hs-form .hs-error-msg {
+    color: #ff4444 !important;
+    font-size: 13px !important;
+    margin-top: 5px !important;
+}
+
+.custom-hs-form .hs-input.error,
+.custom-hs-form .hs-input.invalid {
+    border-color: #ff4444 !important;
+}
+
+/* Success message */
+.custom-hs-form .submitted-message {
+    background: rgba(0, 255, 136, 0.1) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    font-size: 16px !important;
+}
+
+/* Checkbox/Radio */
+.custom-hs-form input[type="checkbox"],
+.custom-hs-form input[type="radio"] {
+    width: auto !important;
+    margin-right: 8px !important;
+}
+
+/* Legal consent text */
+.custom-hs-form .hs-richtext,
+.custom-hs-form .legal-consent-container {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 12px !important;
+}
+
+/* Autofill styling */
+.custom-hs-form input:-webkit-autofill,
+.custom-hs-form input:-webkit-autofill:hover,
+.custom-hs-form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Animation for success message */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .custom-hs-form .hs-input,
+    .custom-hs-form input,
+    .custom-hs-form textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Override any iframe styling if present */
+#hubspot-form iframe {
+    width: 100% !important;
+    border: none !important;
+}
+
+/* Field groups */
+.custom-hs-form .hs-form-field > label.hs-form-booleancheckbox-display {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Remove HubSpot branding if needed */
+.custom-hs-form .hs-form-booleancheckbox-display span {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+</style>
     
     <!-- Footer -->
     <footer>
