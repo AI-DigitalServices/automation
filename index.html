@@ -829,10 +829,10 @@
         <div class="contact-container">
             <div class="contact-form">
                 <!-- HubSpot Form Container -->
-                <div id="hubspot-form" style="min-height: 500px;">
-                    <!-- Form will load here -->
-                    <div style="text-align: center; padding: 40px;">
-                        <div class="loading-spinner" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;">
+                <div id="hubspot-form">
+                    <!-- Loading state -->
+                    <div class="form-loading" style="text-align: center; padding: 40px;">
+                        <div style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;">
                             <i class="fas fa-spinner fa-spin"></i>
                         </div>
                         <p>Loading contact form...</p>
@@ -872,93 +872,161 @@
     </div>
 </section>
 
-<!-- HubSpot Scripts -->
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<!-- Add this script right before closing body tag -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // HubSpot Form Configuration
-    hbspt.forms.create({
-        region: "na1", // or your region
-        portalId: "143905522", // Replace with your HubSpot portal ID
-        formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0", // Replace with your form ID
-        target: "#hubspot-form",
-        onFormReady: function($form) {
-            // Style the form to match your theme
-            styleHubspotForm($form);
-        },
-        onFormSubmit: function($form) {
-            console.log('Form submitted successfully!');
-            // You can add custom success handling here
-        },
-        onFormSubmitted: function($form) {
-            // Optional: Custom success message
-            setTimeout(function() {
-                const successMessage = document.createElement('div');
-                successMessage.innerHTML = `
-                    <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 20px; border-radius: 8px; text-align: center;">
-                        <h3 style="color: #00ff88; margin-bottom: 10px;">Thank You!</h3>
-                        <p>We've received your message and will contact you shortly.</p>
-                    </div>
-                `;
-                document.getElementById('hubspot-form').innerHTML = '';
-                document.getElementById('hubspot-form').appendChild(successMessage);
-            }, 1000);
-        }
-    });
-
-    // Function to style HubSpot form to match your theme
-    function styleHubspotForm($form) {
-        // Add custom CSS to style the form
-        const style = document.createElement('style');
-        style.textContent = `
-            .hs-form fieldset {
-                max-width: 100% !important;
-            }
-            .hs-input {
-                width: 100% !important;
-                padding: 12px 15px !important;
-                background-color: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                border-radius: 8px !important;
-                color: var(--light) !important;
-                font-size: 1rem !important;
-            }
-            .hs-input:focus {
-                outline: none !important;
-                border-color: var(--primary) !important;
-            }
-            .hs-button {
-                background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
-                color: white !important;
-                border: none !important;
-                border-radius: 30px !important;
-                padding: 12px 30px !important;
-                font-weight: 600 !important;
-                text-transform: uppercase !important;
-                letter-spacing: 1px !important;
-                cursor: pointer !important;
-                transition: all 0.3s ease !important;
-            }
-            .hs-button:hover {
-                transform: translateY(-3px) !important;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-            }
-            .hs-form label {
-                color: var(--light) !important;
-                margin-bottom: 8px !important;
-                display: block !important;
-            }
-            .hs-form-field {
-                margin-bottom: 20px !important;
-            }
-            .hs-error-msgs label {
-                color: #ff4444 !important;
-                font-size: 0.8rem !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
+// Wait for all resources to load
+window.addEventListener('load', function() {
+    // Load HubSpot forms script dynamically
+    const script = document.createElement('script');
+    script.charset = 'utf-8';
+    script.type = 'text/javascript';
+    script.src = '//js.hsforms.net/forms/v2.js';
+    
+    script.onload = function() {
+        // Initialize HubSpot form after script loads
+        setTimeout(initializeHubspotForm, 1000);
+    };
+    
+    document.head.appendChild(script);
 });
+
+function initializeHubspotForm() {
+    if (window.hbspt) {
+        hbspt.forms.create({
+            region: "na1",
+            portalId: "143905522", // Replace with your actual portal ID
+            formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0",     // Replace with your actual form ID
+            target: "#hubspot-form",
+            onFormReady: function($form) {
+                console.log('HubSpot form loaded successfully!');
+                applyCustomStyles();
+            },
+            onFormSubmitted: function($form) {
+                // Custom success handling
+                setTimeout(function() {
+                    document.getElementById('hubspot-form').innerHTML = `
+                        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 30px; border-radius: 8px; text-align: center;">
+                            <h3 style="color: #00ff88; margin-bottom: 15px;">Thank You!</h3>
+                            <p>We've received your message and will contact you shortly.</p>
+                        </div>
+                    `;
+                }, 1500);
+            }
+        });
+    } else {
+        console.error('HubSpot forms script not loaded');
+        showFallbackForm();
+    }
+}
+
+function applyCustomStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        /* HubSpot Form Styling */
+        .hs-form fieldset {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        
+        .hs-form-field {
+            margin-bottom: 20px !important;
+            width: 100% !important;
+        }
+        
+        .hs-input {
+            width: 100% !important;
+            padding: 12px 15px !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 8px !important;
+            color: #f8f9fa !important;
+            font-size: 1rem !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+        
+        .hs-input:focus {
+            outline: none !important;
+            border-color: #00d4ff !important;
+            background: rgba(0, 212, 255, 0.05) !important;
+        }
+        
+        .hs-button {
+            background: linear-gradient(90deg, #00d4ff, #7928ca) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 30px !important;
+            padding: 12px 30px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            width: auto !important;
+        }
+        
+        .hs-button:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+        }
+        
+        .hs-form label {
+            color: #f8f9fa !important;
+            margin-bottom: 8px !important;
+            display: block !important;
+            font-weight: 500 !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+        
+        .hs-error-msgs label {
+            color: #ff4444 !important;
+            font-size: 0.8rem !important;
+            margin-top: 5px !important;
+        }
+        
+        .legal-consent-container {
+            color: #6c757d !important;
+            font-size: 0.9rem !important;
+        }
+        
+        /* Form layout adjustments */
+        .hs-form .form-columns-2 .hs-form-field {
+            width: 48% !important;
+            display: inline-block !important;
+            margin-right: 4% !important;
+        }
+        
+        .hs-form .form-columns-2 .hs-form-field:nth-child(2n) {
+            margin-right: 0 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .hs-form .form-columns-2 .hs-form-field {
+                width: 100% !important;
+                margin-right: 0 !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Fallback if HubSpot fails
+function showFallbackForm() {
+    document.getElementById('hubspot-form').innerHTML = `
+        <div style="text-align: center; padding: 40px;">
+            <h3 style="color: #ff4444; margin-bottom: 20px;">Form Loading Issue</h3>
+            <p>Please contact us directly at:</p>
+            <p style="margin: 20px 0;">
+                <a href="mailto:automation@ai-digital.services.com" style="color: #00d4ff; text-decoration: none; font-weight: bold;">
+                    automation@ai-digital.services.com
+                </a>
+            </p>
+            <a href="mailto:automation@ai-digital.services.com?subject=Automation.Ai Inquiry&body=Hello, I'm interested in your services." class="btn">
+                <i class="fas fa-envelope"></i> Email Us Directly
+            </a>
+        </div>
+    `;
+}
 </script>
     
     <!-- Footer -->
