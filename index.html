@@ -819,7 +819,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+<!-- Contact Section -->
 <section id="contact" class="contact">
     <div class="container">
         <div class="section-header">
@@ -829,7 +829,7 @@
         <div class="contact-container">
             <div class="contact-form">
                 <!-- Google Form -->
-                <form id="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ/viewform?usp=dialog" method="POST" target="hidden-frame">
+                <form id="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ/formResponse" method="POST" target="hidden-frame">
                     <!-- Full Name -->
                     <div class="form-group">
                         <label for="name">Full Name *</label>
@@ -876,6 +876,7 @@
                 
                 <!-- Success Message -->
                 <div id="form-success" style="display: none; margin-top: 20px; padding: 15px; background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; border-radius: 8px;">
+                    <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
                     Thank you for your interest! We will contact you shortly.
                 </div>
             </div>
@@ -917,33 +918,71 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('lead-form');
     const successMessage = document.getElementById('form-success');
-    const hiddenFrame = document.getElementById('hidden-frame');
+    const submitBtn = document.getElementById('submit-btn');
     
     // Set timestamp when page loads
     document.getElementById('timestamp').value = new Date().toISOString();
     
     // Handle form submission
     form.addEventListener('submit', function(e) {
+        // Disable submit button to prevent double submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
         // Update timestamp on submit
         document.getElementById('timestamp').value = new Date().toISOString();
         
-        // Hide form and show success message after a delay
+        // Show success message after form submission
         setTimeout(function() {
             form.style.display = 'none';
             successMessage.style.display = 'block';
-        }, 1000);
+            
+            // Optional: Send event to analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submission', {
+                    'event_category': 'Contact',
+                    'event_label': 'Lead Form'
+                });
+            }
+        }, 1500);
     });
     
-    // Optional: Reset form when navigating back to contact section
+    // Reset form functionality
     window.addEventListener('hashchange', function() {
         if (window.location.hash === '#contact') {
             form.style.display = 'block';
             successMessage.style.display = 'none';
             form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Get Started';
+            document.getElementById('timestamp').value = new Date().toISOString();
         }
     });
 });
 </script>
+
+<style>
+/* Additional styles for better UX */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#form-success {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
     
     <!-- Footer -->
     <footer>
