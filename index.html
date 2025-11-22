@@ -828,59 +828,17 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <!-- Google Form -->
-                <form id="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdxM0KsTZH6iiVXopGfSMoFQXgziWlTOdXHm7OuRKdLVmp3SQ/formResponse" method="POST" target="hidden-frame">
-                    <!-- Full Name -->
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="entry.735257537" required>
+                <!-- HubSpot Form Container -->
+                <div id="hubspot-form" style="min-height: 500px;">
+                    <!-- Form will load here -->
+                    <div style="text-align: center; padding: 40px;">
+                        <div class="loading-spinner" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                        <p>Loading contact form...</p>
                     </div>
-                    
-                    <!-- Company -->
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" name="entry.1259905861">
-                    </div>
-                    
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="entry.1104257255" required>
-                    </div>
-                    
-                    <!-- Phone -->
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="entry.58258178">
-                    </div>
-                    
-                    <!-- Message -->
-                    <div class="form-group">
-                        <label for="message">How can we help you? *</label>
-                        <textarea id="message" name="entry.1308375756" required></textarea>
-                    </div>
-                    
-                    <!-- Hidden Source Field -->
-                    <input type="hidden" name="entry.433256798" value="Website Contact Form">
-                    
-                    <!-- Hidden Timestamp -->
-                    <input type="hidden" name="entry.934908280" value="" id="timestamp">
-                    
-                    <button type="submit" class="btn" id="submit-btn">
-                        Get Started
-                    </button>
-                </form>
-
-                <!-- Hidden iframe for form submission -->
-                <iframe name="hidden-frame" id="hidden-frame" style="display: none;"></iframe>
-                
-                <!-- Success Message -->
-                <div id="form-success" style="display: none; margin-top: 20px; padding: 15px; background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; border-radius: 8px;">
-                    <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
-                    Thank you for your interest! We will contact you shortly.
                 </div>
             </div>
-            
             <div class="contact-info">
                 <div class="contact-method">
                     <div class="contact-icon">
@@ -914,75 +872,94 @@
     </div>
 </section>
 
+<!-- HubSpot Scripts -->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('lead-form');
-    const successMessage = document.getElementById('form-success');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    // Set timestamp when page loads
-    document.getElementById('timestamp').value = new Date().toISOString();
-    
-    // Handle form submission
-    form.addEventListener('submit', function(e) {
-        // Disable submit button to prevent double submission
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        
-        // Update timestamp on submit
-        document.getElementById('timestamp').value = new Date().toISOString();
-        
-        // Show success message after form submission
-        setTimeout(function() {
-            form.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Optional: Send event to analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submission', {
-                    'event_category': 'Contact',
-                    'event_label': 'Lead Form'
-                });
-            }
-        }, 1500);
-    });
-    
-    // Reset form functionality
-    window.addEventListener('hashchange', function() {
-        if (window.location.hash === '#contact') {
-            form.style.display = 'block';
-            successMessage.style.display = 'none';
-            form.reset();
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Get Started';
-            document.getElementById('timestamp').value = new Date().toISOString();
+    // HubSpot Form Configuration
+    hbspt.forms.create({
+        region: "na1", // or your region
+        portalId: "143905522", // Replace with your HubSpot portal ID
+        formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0", // Replace with your form ID
+        target: "#hubspot-form",
+        onFormReady: function($form) {
+            // Style the form to match your theme
+            styleHubspotForm($form);
+        },
+        onFormSubmit: function($form) {
+            console.log('Form submitted successfully!');
+            // You can add custom success handling here
+        },
+        onFormSubmitted: function($form) {
+            // Optional: Custom success message
+            setTimeout(function() {
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 20px; border-radius: 8px; text-align: center;">
+                        <h3 style="color: #00ff88; margin-bottom: 10px;">Thank You!</h3>
+                        <p>We've received your message and will contact you shortly.</p>
+                    </div>
+                `;
+                document.getElementById('hubspot-form').innerHTML = '';
+                document.getElementById('hubspot-form').appendChild(successMessage);
+            }, 1000);
         }
     });
+
+    // Function to style HubSpot form to match your theme
+    function styleHubspotForm($form) {
+        // Add custom CSS to style the form
+        const style = document.createElement('style');
+        style.textContent = `
+            .hs-form fieldset {
+                max-width: 100% !important;
+            }
+            .hs-input {
+                width: 100% !important;
+                padding: 12px 15px !important;
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 8px !important;
+                color: var(--light) !important;
+                font-size: 1rem !important;
+            }
+            .hs-input:focus {
+                outline: none !important;
+                border-color: var(--primary) !important;
+            }
+            .hs-button {
+                background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 30px !important;
+                padding: 12px 30px !important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 1px !important;
+                cursor: pointer !important;
+                transition: all 0.3s ease !important;
+            }
+            .hs-button:hover {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+            }
+            .hs-form label {
+                color: var(--light) !important;
+                margin-bottom: 8px !important;
+                display: block !important;
+            }
+            .hs-form-field {
+                margin-bottom: 20px !important;
+            }
+            .hs-error-msgs label {
+                color: #ff4444 !important;
+                font-size: 0.8rem !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 });
 </script>
-
-<style>
-/* Additional styles for better UX */
-.btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-#form-success {
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-</style>
     
     <!-- Footer -->
     <footer>
