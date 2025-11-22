@@ -1028,6 +1028,45 @@ function showFallbackForm() {
     `;
 }
 </script>
+    <!-- Add this right before </body> -->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+function initHubSpotForm() {
+    if (typeof hbspt !== 'undefined' && hbspt.forms) {
+        hbspt.forms.create({
+            region: "na1",
+            portalId: "143905522",
+            formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0",
+            target: '#hubspot-form',
+            cssClass: 'custom-hs-form',
+            
+            onFormReady: function($form) {
+                console.log('Form loaded!');
+            },
+            
+            onFormSubmitted: function($form) {
+                setTimeout(function() {
+                    document.getElementById('hubspot-form').innerHTML = `
+                        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 30px; border-radius: 8px; text-align: center;">
+                            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <h3 style="color: #00ff88; margin-bottom: 15px;">Thank You!</h3>
+                            <p>We've received your message and will contact you shortly.</p>
+                        </div>
+                    `;
+                }, 500);
+            }
+        });
+    } else {
+        setTimeout(initHubSpotForm, 100);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHubSpotForm);
+} else {
+    initHubSpotForm();
+}
+</script>
     
     <!-- Footer -->
     <footer>
