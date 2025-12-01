@@ -14,85 +14,118 @@
         }
 
         :root {
-            --primary: #00ff88;
-            --primary-dark: #00cc6a;
-            --dark: #0a0e27;
-            --dark-secondary: #151932;
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --secondary: #7928ca;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #00ff88;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
-            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
             line-height: 1.6;
         }
 
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            padding: 100px 20px 60px;
-            text-align: center;
+        section {
+            padding: 80px 0;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
             line-height: 1.2;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--primary), #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 800px;
-            margin: 0 auto 40px;
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--light);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
         }
 
         .btn {
             display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #000;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.125rem;
+            cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: radial-gradient(circle at top right, rgba(121, 40, 202, 0.2), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.2), transparent 50%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
 
         /* Checklist Section */
         .checklist {
-            padding: 80px 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background-color: var(--dark);
         }
 
         .section-header {
@@ -100,110 +133,178 @@
             margin-bottom: 60px;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
         .section-header p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .checklist-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
         .checklist-step {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
             border-radius: 15px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .checklist-step:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(5px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         .step-number {
             display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: #000;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             text-align: center;
-            line-height: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .step-title {
-            font-size: 1.5rem;
+            line-height: 40px;
+            font-weight: bold;
             margin-bottom: 15px;
         }
 
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
         .step-instruction {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            line-height: 1.8;
+            margin-bottom: 15px;
+            color: var(--light);
         }
 
         .success-metric {
-            background: rgba(0, 255, 136, 0.1);
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid var(--success);
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 0 8px 8px 0;
             margin-top: 15px;
         }
 
         .success-metric h4 {
-            color: var(--primary);
-            margin-bottom: 8px;
+            color: var(--success);
             font-size: 1rem;
+            margin-bottom: 5px;
         }
 
-        .success-metric p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9375rem;
-        }
-
-        /* Lead Capture Section - CENTERED AND STYLED */
+        /* Lead Capture Section - FIXED STYLING */
         .lead-capture {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 204, 106, 0.02));
+            background: radial-gradient(circle at center, rgba(121, 40, 202, 0.1), transparent 70%);
         }
 
-        .lead-form-wrapper {
+        .lead-form-container {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 50px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .lead-form-wrapper h2 {
+        .lead-form-container h2 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--primary);
+            margin-bottom: 15px;
         }
 
-        .lead-form-wrapper .subtitle {
+        .lead-form-container .subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--gray);
             margin-bottom: 30px;
         }
 
+        /* MailChimp Form Styling */
+        #mc_embed_signup {
+            background: transparent !important;
+            clear: left;
+            font: 14px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+        }
+
+        #mc_embed_signup .mc-field-group {
+            margin-bottom: 20px;
+        }
+
+        #mc_embed_signup label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        #mc_embed_signup input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #mc_embed_signup input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.1);
+        }
+
+        #mc_embed_signup .asterisk {
+            color: #ff4444;
+        }
+
+        #mc_embed_signup .clear {
+            margin-top: 20px;
+        }
+
+        #mc_embed_signup .button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #mc_embed_signup .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #mc_embed_signup .response {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        #mc_embed_signup #mce-error-response {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+
+        #mc_embed_signup #mce-success-response {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        /* Trust Badges */
         .trust-badges {
             display: flex;
             justify-content: center;
@@ -216,214 +317,127 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            color: var(--gray);
         }
 
         .badge i {
             color: var(--primary);
         }
 
-        /* Custom Form Styling */
-        .custom-form .form-group {
-            margin-bottom: 20px;
-        }
-
-        .custom-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 0.875rem;
-        }
-
-        .custom-form input,
-        .custom-form select {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .custom-form input:focus,
-        .custom-form select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
-        }
-
-        .custom-form input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .custom-form select {
-            cursor: pointer;
-        }
-
-        .custom-form button {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #000;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.125rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .custom-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
-        }
-
-        .custom-form button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .success-message.active {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .success-message i {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .success-message h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Results Section */
         .results {
-            padding: 80px 20px;
+            background-color: var(--dark);
         }
 
         .results-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
         .result-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
             border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .result-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .result-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 2rem;
-            color: #000;
         }
 
-        .result-card h3 {
+        .result-icon i {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .result-card p {
-            color: rgba(255, 255, 255, 0.7);
+            color: white;
         }
 
         /* CTA Section */
         .cta {
-            padding: 80px 20px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.2);
+            padding: 100px 0;
+            background: radial-gradient(circle at top right, rgba(121, 40, 202, 0.2), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.2), transparent 50%);
         }
 
         .cta h2 {
-            font-size: 3rem;
             margin-bottom: 20px;
         }
 
         .cta p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
-            margin: 0 auto 40px;
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 968px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
 
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
             .checklist-container {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .lead-form-wrapper {
-                padding: 40px 30px;
+        @media (max-width: 768px) {
+            .lead-form-container {
+                padding: 30px 20px;
             }
-
-            .cta h2 {
-                font-size: 2rem;
+            
+            section {
+                padding: 60px 0;
             }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
+            h1 {
+                font-size: 2.2rem;
             }
-
-            .lead-form-wrapper {
-                padding: 30px 20px;
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
             }
         }
     </style>
@@ -434,11 +448,11 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <i class="fas fa-rocket"></i> For CEOs, Founders, & Managers
+                    <i class="fas fa-rocket"></i> For CEOs, Founders & Managers
                 </div>
                 <h1>Stop Leaking Revenue From Poor Lead Follow-Up</h1>
                 <p>The <strong>5-Step Lead Sync Checklist</strong> helps you diagnose your biggest lead follow-up gaps and build a system that works 24/7. Complete in just 15 minutes.</p>
-                <a href="#subscribe" class="btn">Get The Checklist Free</a>
+                <a href="#subscribe" class="btn">See The Checklist</a>
             </div>
         </div>
     </section>
@@ -473,7 +487,7 @@
                         
                         <div class="success-metric">
                             <h4>✅ Success Metric</h4>
-                            <p>You have a written, honest flowchart of your current process.</p>
+                            <p>You have a written, honest flowchart of your current process. <em>Spoiler: If it lives in your head and inbox, it's broken.</em></p>
                         </div>
                     </div>
                     
@@ -485,7 +499,7 @@
                         
                         <div class="success-metric">
                             <h4>✅ Success Metric</h4>
-                            <p>You know exactly which connections are missing.</p>
+                            <p>You know exactly which connections are missing. <em>If you checked less than 3 boxes, you're manually bridging gaps that tech should handle.</em></p>
                         </div>
                     </div>
                 </div>
@@ -494,7 +508,7 @@
                     <!-- Step 4 -->
                     <div class="checklist-step">
                         <div class="step-number">4</div>
-                        <h3 class="step-title">Script Your 3 Must-Send Emails</h3>
+                        <h3 class="step-title">Script Your 3-Must-Send Emails</h3>
                         <p class="step-instruction">You don't need 7 emails to start. Define these 3 core emails with subject lines and key value propositions.</p>
                         
                         <div class="success-metric">
@@ -516,22 +530,23 @@
                     </div>
                     
                     <!-- Results Card -->
-                    <div class="checklist-step" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 106, 0.05)); border-color: var(--primary);">
-                        <h3 class="step-title">What's Your Score?</h3>
+                    <div class="checklist-step" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(121, 40, 202, 0.1)); border-color: var(--primary);">
+                        <h3 class="step-title">You've Completed the Checklist! What's Your Score?</h3>
                         <p><strong>Mostly Yeses:</strong> Your foundation is solid. You're ready to connect the dots and fully automate.</p>
-                        <p style="margin-top: 10px;"><strong>Mostly Nos:</strong> You're working too hard. The manual process is costing you clients. Automation will 10x your efficiency.</p>
+                        <p><strong>Mostly Nos:</strong> You're working too hard. The manual process is costing you clients. Automation will 10x your efficiency.</p>
+                        <p style="margin-top: 15px; font-style: italic;">This is the exact framework we implement for our clients. If you completed this checklist and saw gaps, you now have a clear blueprint for what to fix next.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lead Capture Section - PROPERLY CENTERED -->
+    <!-- Lead Capture Section - FIXED CENTERING -->
     <section id="subscribe" class="lead-capture">
         <div class="container">
-            <div class="lead-form-wrapper">
-                <h2>Get Your Free Checklist</h2>
-                <p class="subtitle">Download the complete 5-Step framework with templates</p>
+            <div class="lead-form-container">
+                <h2>Get Your Complete Checklist Toolkit</h2>
+                <p class="subtitle">Download the full checklist with templates, email scripts, and automation workflows to implement immediately.</p>
 
                 <div class="trust-badges">
                     <div class="badge">
@@ -548,56 +563,63 @@
                     </div>
                 </div>
 
-                <!-- Custom Styled Form -->
-                <form id="lead-form" class="custom-form">
-                    <div class="form-group">
-                        <label for="fname">First Name *</label>
-                        <input type="text" id="fname" name="fname" required placeholder="John">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lname">Last Name *</label>
-                        <input type="text" id="lname" name="lname" required placeholder="Smith">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="john@company.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" placeholder="Your Company">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="role">Your Role</label>
-                        <select id="role" name="role">
-                            <option value="">Select your role</option>
-                            <option value="CEO/Founder">CEO/Founder</option>
-                            <option value="Director/VP">Director/VP</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Sales">Sales</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" id="submit-btn">
-                        <i class="fas fa-download"></i> Get My Free Checklist
-                    </button>
-
-                    <p class="form-footer">
-                        By submitting, you agree to receive helpful automation tips. Unsubscribe anytime.
-                    </p>
-                </form>
-
-                <!-- Success Message -->
-                <div class="success-message" id="success-message">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Check Your Email!</h3>
-                    <p>Your 5-Step Lead Sync Checklist is on its way. Check your inbox in the next 2 minutes.</p>
+                <!-- MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                    <form action="https://ai-digitalservices.us6.list-manage.com/subscribe/post?u=45db548086238ec9bd153e349&amp;id=9e0ec388f3&amp;f_id=00e7c0e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name <span class="asterisk">*</span></label>
+                                <input type="text" value="" name="FNAME" class="required" id="mce-FNAME" required>
+                            </div>
+                            
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name <span class="asterisk">*</span></label>
+                                <input type="text" value="" name="LNAME" class="required" id="mce-LNAME" required>
+                            </div>
+                            
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                            </div>
+                            
+                            <div class="mc-field-group">
+                                <label for="mce-COMPANY">Company Name</label>
+                                <input type="text" value="" name="COMPANY" class="" id="mce-COMPANY">
+                            </div>
+                            
+                            <div class="mc-field-group">
+                                <label for="mce-ROLE">Your Role</label>
+                                <select name="ROLE" class="" id="mce-ROLE">
+                                    <option value="">Select your role</option>
+                                    <option value="CEO/Founder">CEO/Founder</option>
+                                    <option value="Director/VP">Director/VP</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <input type="text" name="b_45db548086238ec9bd153e349_9e0ec388f3" tabindex="-1" value="">
+                            </div>
+                            
+                            <div class="clear">
+                                <input type="submit" value="Download Checklist Toolkit" name="subscribe" id="mc-embedded-subscribe" class="button">
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                
+                <p style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: var(--gray);">
+                    By submitting, you agree to receive our automation newsletter. Unsubscribe anytime.
+                </p>
             </div>
         </div>
     </section>
@@ -642,84 +664,61 @@
     <section class="cta">
         <div class="container">
             <h2>Ready to Stop Leaking Revenue?</h2>
-            <p>Get instant access to the complete 5-Step Lead Sync Checklist with templates and implementation guide</p>
+            <p>Download the complete 5-Step Lead Sync Checklist with templates and implementation guide</p>
             <a href="#subscribe" class="btn">Get Your Copy Now</a>
         </div>
     </section>
 
-    <!-- Form Submission Script -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Automation.<span>Ai</span></div>
+            <p>Helping brands automate, optimize, and grow smarter.</p>
+            <div class="copyright">
+                <p>&copy; 2025 Automation.Ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MailChimp Script -->
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';ftypes[0]='email';
+            fnames[1]='FNAME';ftypes[1]='text';
+            fnames[2]='LNAME';ftypes[2]='text';
+            fnames[3]='COMPANY';ftypes[3]='text';
+            fnames[4]='ROLE';ftypes[4]='dropdown';
+        }(jQuery));
+        
+        var $mcj = jQuery.noConflict(true);
+    </script>
+
     <script>
+        // Smooth scrolling for anchor links
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('lead-form');
-            const submitBtn = document.getElementById('submit-btn');
-            const successMessage = document.getElementById('success-message');
-
-            // OPTION 1: Use your Mailchimp endpoint
-            const MAILCHIMP_URL = 'https://ai-digitalservices.us6.list-manage.com/subscribe/post-json?u=45db548086238ec9bd153e349&id=9e0ec388f3&c=?';
-
-            // OPTION 2: Or use n8n webhook
-            // const WEBHOOK_URL = 'https://your-n8n-instance.com/webhook/lead-checklist';
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-                const formData = {
-                    FNAME: document.getElementById('fname').value.trim(),
-                    LNAME: document.getElementById('lname').value.trim(),
-                    EMAIL: document.getElementById('email').value.trim(),
-                    COMPANY: document.getElementById('company').value.trim(),
-                    ROLE: document.getElementById('role').value
-                };
-
-                try {
-                    // Using Mailchimp JSONP
-                    const url = MAILCHIMP_URL + 
-                        '&FNAME=' + encodeURIComponent(formData.FNAME) +
-                        '&LNAME=' + encodeURIComponent(formData.LNAME) +
-                        '&EMAIL=' + encodeURIComponent(formData.EMAIL) +
-                        '&COMPANY=' + encodeURIComponent(formData.COMPANY) +
-                        '&ROLE=' + encodeURIComponent(formData.ROLE);
-
-                    // Create script tag for JSONP
-                    const script = document.createElement('script');
-                    script.src = url;
-                    document.body.appendChild(script);
-
-                    // Show success after short delay
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        successMessage.classList.add('active');
-
-                        // Track conversion
-                        if (typeof gtag !== 'undefined') {
-                            gtag('event', 'conversion', {
-                                'event_category': 'Lead Capture',
-                                'event_label': 'Checklist Download'
-                            });
-                        }
-                    }, 1000);
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Oops! Please try again or email us at automation@ai-digitalservices.com');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-download"></i> Get My Free Checklist';
-                }
-            });
-
-            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
                 });
             });
+
+            // Show success message when form is submitted
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('subscribe') && urlParams.get('subscribe') === 'success') {
+                setTimeout(() => {
+                    alert('Thank you! Check your email for the checklist download link.');
+                }, 500);
+            }
         });
     </script>
 </body>
