@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Step Lead Sync Checklist - Stop Leaking Revenue</title>
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --secondary: #7928ca;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --danger: #ff4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--light);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--darker);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: radial-gradient(circle at top right, rgba(121, 40, 202, 0.2), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.2), transparent 50%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Checklist Section */
+        .checklist {
+            background-color: var(--dark);
+        }
+        
+        .checklist-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .checklist-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .checklist-step {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .checklist-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .step-instruction {
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .success-metric {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid var(--success);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+        }
+        
+        .success-metric h4 {
+            color: var(--success);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Lead Capture Section */
+        .lead-capture {
+            background: radial-gradient(circle at center, rgba(121, 40, 202, 0.1), transparent 70%);
+            text-align: center;
+        }
+        
+        .lead-box {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 15px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .lead-box h2 {
+            margin-bottom: 20px;
+        }
+        
+        .lead-box p {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 3px;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+        
+        #form-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        /* Results Section */
+        .results {
+            background-color: var(--dark);
+        }
+        
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .result-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .result-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .result-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 100px 0;
+            background: radial-gradient(circle at top right, rgba(121, 40, 202, 0.2), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.2), transparent 50%);
+        }
+        
+        .cta h2 {
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .checklist-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .lead-box {
+                padding: 30px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i> For CEOs, Founders & Managers
+                </div>
+                <h1>Stop Leaking Revenue From Poor Lead Follow-Up</h1>
+                <p>The <strong>5-Step Lead Sync Checklist</strong> helps you diagnose your biggest lead follow-up gaps and build a system that works 24/7. Complete in just 15 minutes.</p>
+                <a href="#checklist" class="btn">See The Checklist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist Section -->
+    <section id="checklist" class="checklist">
+        <div class="container">
+            <div class="section-header">
+                <h2>The 5-Step Lead Sync Checklist</h2>
+                <p>Follow these steps to diagnose your lead follow-up gaps and build an automated system</p>
+            </div>
+            
+            <div class="checklist-container">
+                <div class="checklist-steps">
+                    <!-- Step 1 -->
+                    <div class="checklist-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Diagnose Your Lead Black Hole</h3>
+                        <p class="step-instruction"><strong>Find your last 10 leads</strong> from the past month. Use your CRM, spreadsheet, or inbox to track them.</p>
+                        
+                        <div class="success-metric">
+                            <h4>✅ Success Metric</h4>
+                            <p>You can identify <strong>WHERE</strong> and <strong>WHEN</strong> you're losing leads.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="checklist-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Map Your 'Secret' Lead Workflow</h3>
+                        <p class="step-instruction">Honestly answer how a lead currently moves from your website to a booked call. No judgment, just facts.</p>
+                        
+                        <div class="success-metric">
+                            <h4>✅ Success Metric</h4>
+                            <p>You have a written, honest flowchart of your current process. <em>Spoiler: If it lives in your head and inbox, it's broken.</em></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="checklist-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Audit Your Tech Stack Communication</h3>
+                        <p class="step-instruction">Check which connections are missing in your current setup. Be harsh with your evaluation.</p>
+                        
+                        <div class="success-metric">
+                            <h4>✅ Success Metric</h4>
+                            <p>You know exactly which connections are missing. <em>If you checked less than 3 boxes, you're manually bridging gaps that tech should handle.</em></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checklist-steps">
+                    <!-- Step 4 -->
+                    <div class="checklist-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Script Your 3-Must-Send Emails</h3>
+                        <p class="step-instruction">You don't need 7 emails to start. Define these 3 core emails with subject lines and key value propositions.</p>
+                        
+                        <div class="success-metric">
+                            <h4>✅ Success Metric</h4>
+                            <p>You have a simple, repeatable email sequence framework ready to automate.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="checklist-step">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">Implement Your 'Booking Trap'</h3>
+                        <p class="step-instruction">This is the most important step. Make it impossible for a warm lead to slip away by defining clear automation rules.</p>
+                        
+                        <div class="success-metric">
+                            <h4>✅ Success Metric</h4>
+                            <p>You have a clear "if this, then that" rule for handling a booking, removing all manual work.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Card -->
+                    <div class="checklist-step" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(121, 40, 202, 0.1)); border-color: var(--primary);">
+                        <h3 class="step-title">You've Completed the Checklist! What's Your Score?</h3>
+                        <p><strong>Mostly Yeses:</strong> Your foundation is solid. You're ready to connect the dots and fully automate.</p>
+                        <p><strong>Mostly Nos:</strong> You're working too hard. The manual process is costing you clients. Automation will 10x your efficiency.</p>
+                        <p style="margin-top: 15px; font-style: italic;">This is the exact framework we implement for our clients. If you completed this checklist and saw gaps, you now have a clear blueprint for what to fix next.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Section -->
+    <section class="lead-capture">
+        <div class="container">
+            <div class="lead-box">
+                <h2>Get Your Complete Checklist Toolkit</h2>
+                <p>Download the full checklist with templates, email scripts, and automation workflows to implement immediately.</p>
+                
+                <form id="checklist-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">I agree to receive communications about automation strategies and resources.</label>
+                    </div>
+                    <button type="submit" class="btn">Download Checklist Toolkit</button>
+                </form>
+                
+                <div id="form-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="section-header">
+                <h2>What You'll Achieve</h2>
+                <p>Implementing this checklist transforms your lead management process</p>
+            </div>
+            
+            <div class="results-container">
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Faster Response Times</h3>
+                    <p>Reduce lead response time from days to minutes with automated systems</p>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Higher Conversion Rates</h3>
+                    <p>Capture more qualified leads before they go cold or to competitors</p>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Recover Lost Time</h3>
+                    <p>Automate manual follow-up tasks and focus on high-value activities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Stop Leaking Revenue?</h2>
+            <p>Download the complete 5-Step Lead Sync Checklist with templates and implementation guide</p>
+            <a href="#checklist" class="btn">Get Your Copy Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Automation.<span>Ai</span></div>
+            <p>Helping brands automate, optimize, and grow smarter.</p>
+            <div class="copyright">
+                <p>&copy; 2023 Automation.Ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling
+        document.getElementById('checklist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                source: 'Lead Sync Checklist Page'
+            };
+            
+            // Show success message
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.innerHTML = `
+                <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 20px; border-radius: 8px;">
+                    <h4 style="color: #00ff88; margin-bottom: 10px;">Thank You, ${formData.name}!</h4>
+                    <p>We've sent the complete checklist toolkit to <strong>${formData.email}</strong></p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Check your inbox (and spam folder) for the download link.</p>
+                </div>
+            `;
+            messageDiv.style.display = 'block';
+            
+            // Log data (in a real implementation, you'd send this to your backend)
+            console.log('Checklist download requested:', formData);
+            
+            // In a real implementation, you would:
+            // 1. Send data to your CRM/email service
+            // 2. Trigger an automated email with the checklist
+            // 3. Add lead to your nurturing sequence
+            
+            // For demo purposes, we'll just show the success message
+            // Reset form
+            this.reset();
+            
+            // Scroll to message
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
