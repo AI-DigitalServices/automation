@@ -1,0 +1,54 @@
+e-work Privacy Policy
+
+Last Updated: January 23, 2026
+1. Introduction
+
+Welcome to e-work, a proprietary AI-powered productivity extension developed by AI Digital Services (www.ai-digitalservices.com). This extension is designed to help digital marketing agencies and professionals streamline their Upwork workflow through real-time lead scoring and AI-assisted proposal drafting.
+
+Your privacy is a priority. This policy outlines how e-work interacts with your data, ensuring full transparency and compliance with the Google Chrome Web Store's Limited Use policy.
+2. Data We Collect (and Why)
+
+e-work operates on a principle of Data Minimization. We only access the data necessary to perform the extension’s core functions:
+
+    Job Descriptions & Titles: When you browse Upwork.com, the extension reads the text of job postings to provide real-time quality scoring and to generate proposal drafts.
+
+    User-Provided API Keys: We collect your OpenAI API key to facilitate the connection between the extension and the AI model.
+
+3. How Data is Processed
+
+    Local Processing: The majority of data processing happens locally within your browser.
+
+    Third-Party AI Integration: When a job is analyzed for scoring or a proposal is drafted, the job text is sent to the OpenAI API. This data is sent solely to generate a response and is not stored or utilized by AI Digital Services.
+
+    No Central Servers: We do not host a central database. Your job leads, drafts, and browsing history are never sent to AI Digital Services’ servers.
+
+4. Data Storage and Security
+
+    API Keys: Your OpenAI API key is stored using chrome.storage.sync. This data is encrypted by your Chrome profile and is only accessible by you.
+
+    No Persistent Logs: We do not maintain logs of your activity or the proposals you generate. Once you close your browser or clear your storage, that session's data is gone.
+
+5. Upwork Compliance & Safety
+
+e-work is built to respect Upwork’s Terms of Service:
+
+    Human-in-the-Loop: The extension does not automate the submission of proposals or interact with Upwork’s "Submit" buttons.
+
+    Rate Limiting: The extension only scans content already visible on your screen to avoid "aggressive scraping" triggers.
+
+6. Third-Party Disclosure
+
+We do not sell, trade, or otherwise transfer your information to outside parties. The only third party involved is OpenAI, which receives job text for the sole purpose of AI processing under their API terms.
+7. User Rights and Control
+
+You have full control over your data:
+
+    You can update or delete your API key at any time via the extension dashboard.
+
+    You can disable real-time monitoring by closing the Upwork tab or uninstalling the extension.
+
+8. Contact Us
+
+If you have any questions regarding this Privacy Policy or the practices of e-work, please contact us at: Website: www.ai-digitalservices.com
+
+Email: Oshapi@ai-digitalservices.com
