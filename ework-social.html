@@ -165,5 +165,38 @@
     });
   </script>
 
+  <!-- Cookie Consent Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const banner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('accept-cookies');
+      const rejectBtn = document.getElementById('reject-cookies');
+
+      // Show banner if no consent yet
+      if (!localStorage.getItem('cookieConsent')) {
+        setTimeout(() => {
+          banner.classList.remove('translate-y-32');
+        }, 1000);
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        banner.classList.add('translate-y-32');
+        // You can add real tracking scripts here
+      });
+
+      rejectBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'rejected');
+        banner.classList.add('translate-y-32');
+      });
+
+      // Fake form submission (replace with real backend later)
+      document.getElementById('signup-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you! Your account is being created... (demo)');
+      });
+    });
+  </script>
+  
 </body>
 </html>
