@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eWork Social – All-in-One Social Media Management for Agencies</title>
+  <meta name="description" content="Manage multiple social accounts, schedule posts, analyze performance and grow your agency with eWork Social."/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',      // indigo-500
+            primaryDark: '#4f46e5',  // indigo-600
+            dark: '#0f172a',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font: Inter (clean & modern) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+  <!-- Hero -->
+  <header class="relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white">
+    <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.4\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+
+    <nav class="relative container mx-auto px-6 py-6 flex justify-between items-center">
+      <div class="text-2xl font-bold tracking-tight">eWork Social</div>
+      <a href="#signup" class="bg-white text-indigo-700 px-6 py-2.5 rounded-lg font-medium hover:bg-gray-100 transition">
+        Get Started Free
+      </a>
+    </nav>
+
+    <div class="relative container mx-auto px-6 pt-16 pb-24 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+        Manage All Your Social Media<br class="hidden md:block"/> in One Powerful Dashboard
+      </h1>
+      <p class="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto mb-10">
+        Schedule posts • Auto-respond • Analyze performance • Handle clients • Scale your agency
+      </p>
+      <div class="flex flex-col sm:flex-row gap-5 justify-center">
+        <a href="#signup" class="bg-white text-indigo-700 px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition shadow-lg">
+          Start 7-Day Free Trial →
+        </a>
+        <a href="#contact" class="border-2 border-white/40 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition">
+          Contact Sales
+        </a>
+      </div>
+      <p class="mt-6 text-indigo-200 text-sm">No credit card required • Cancel anytime</p>
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Everything your agency needs</h2>
+
+      <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-indigo-100 flex items-center justify-center text-3xl">📅</div>
+          <h3 class="text-2xl font-semibold mb-4">Smart Scheduling</h3>
+          <p class="text-gray-600">Post across 10+ platforms at the best times — with AI suggestions and bulk upload.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl">🤖</div>
+          <h3 class="text-2xl font-semibold mb-4">Auto-Responder & AI</h3>
+          <p class="text-gray-600">Reply instantly to comments & DMs with smart templates or full AI automation.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl">📊</div>
+          <h3 class="text-2xl font-semibold mb-4">Client Dashboard + CRM</h3>
+          <p class="text-gray-600">White-label reports, client portals, pipelines, notes — all inside one workspace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup / Contact Form -->
+  <section id="signup" class="py-24 bg-gradient-to-br from-indigo-50 to-purple-50">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="bg-white rounded-2xl shadow-xl p-10 md:p-14">
+        <h2 class="text-4xl font-bold text-center mb-4">Start Growing Today</h2>
+        <p class="text-center text-gray-600 text-lg mb-10">Create your free account in 30 seconds — no credit card needed.</p>
+
+        <form id="signup-form" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <input type="text" placeholder="Agency / Full Name" required class="w-full px-5 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+            <input type="email" placeholder="Business Email" required class="w-full px-5 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+          </div>
+          <input type="tel" placeholder="Phone (optional)" class="w-full px-5 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+          <textarea placeholder="Tell us about your agency or project (optional)" rows="4" class="w-full px-5 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"></textarea>
+
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg py-5 rounded-xl transition shadow-lg">
+            Create Free Account →
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 mt-8">
+          By signing up you agree to our <a href="#privacy" class="text-indigo-600 hover:underline">Terms</a> and <a href="#privacy" class="text-indigo-600 hover:underline">Privacy Policy</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300">
+    <div class="container mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <div class="text-2xl font-bold text-white mb-4">eWork Social</div>
+          <p class="text-gray-400">Modern social media management built for agencies and teams.</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Product</h4>
+          <ul class="space-y-3">
+            <li><a href="#features" class="hover:text-white transition">Features</a></li>
+            <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+            <li><a href="#signup" class="hover:text-white transition">Get Started</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Company</h4>
+          <ul class="space-y-3">
+            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+            <li><a href="#about" class="hover:text-white transition">About</a></li>
+            <li><a href="#careers" class="hover:text-white transition">Careers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="#privacy" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#terms" class="hover:text-white transition">Terms of Service</a></li>
+            <li><a href="#cookies" class="hover:text-white transition">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+        <p>© 2026 eWork Social. All rights reserved.</p>
+        <p class="mt-2 text-gray-500">Made with ❤️ for agencies worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple form submit notice (replace with real backend later) -->
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you! Your request has been received. We will get back to you shortly.');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
