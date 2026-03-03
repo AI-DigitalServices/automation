@@ -1,0 +1,77 @@
+1. Privacy Policy
+eWork Social Privacy Policy
+Last Updated: March 3, 2026
+1. Introduction
+Welcome to eWork Social, a powerful social media management SaaS platform developed by AI Digital Services (www.ai-digitalservices.com).
+eWork Social helps agencies and teams schedule posts, automate responses, manage clients, analyze performance, and scale across multiple platforms — all from one secure dashboard.
+Your privacy matters. This Privacy Policy explains what data we collect, how we use it, how we protect it, and your rights. We operate under strict data minimization principles and comply with applicable laws, including Nigeria Data Protection Act (NDPA) and international standards where relevant.
+2. Data We Collect and Why
+We collect only what is necessary to deliver and improve the service:
+
+Account & Profile Data
+Name, business email, phone (optional), agency name, profile picture (optional), password hash.
+Payment & Billing Data
+When you subscribe: billing name, address, payment method details (handled securely by Stripe — we never store full card numbers).
+Usage & Content Data
+Social media account connections (tokens/credentials encrypted), scheduled posts, auto-responder rules, uploaded media, client notes, CRM contacts/leads/deals, analytics data you view or export.
+Technical & Device Data
+IP address, browser type/version, device type, operating system, approximate location (city-level), pages visited, time spent, referral source, cookies/session IDs.
+Support & Communication Data
+Emails, live chat messages, support tickets.
+
+3. How We Collect Data
+
+Directly from you (sign-up, settings, form submissions)
+Automatically (cookies, analytics tools, server logs)
+From third parties (Stripe for payments, social platforms via OAuth when you connect accounts)
+
+4. How We Use Your Data
+
+Provide, maintain, and improve the service
+Authenticate and secure your account
+Process subscriptions and send receipts/invoices
+Send service emails (welcome, billing, feature updates — you can opt out of marketing)
+Analyze usage to improve product and detect abuse
+Comply with legal obligations (e.g., tax, fraud prevention)
+
+5. Data Storage & Security
+
+Data is stored in secure cloud infrastructure (AWS / similar) with encryption at rest and in transit.
+Access is strictly limited (role-based, audited).
+Social tokens are encrypted and stored securely.
+We do not sell your data. Ever.
+
+6. Third-Party Services
+We use trusted partners who are bound by strict agreements:
+
+Stripe (payments)
+Social platforms (via OAuth — only access you explicitly grant)
+Email delivery (e.g., Resend, SendGrid)
+Analytics (e.g., PostHog, Plausible — privacy-first tools)
+
+7. Data Retention
+
+Account data: kept while your account is active + 90 days after deletion (for legal/tax reasons)
+Content (posts, CRM data): kept until you delete it or your account is deleted
+Logs: 30–90 days
+
+8. Your Rights
+You have the right to:
+
+Access, correct, or delete your data
+Export your data (contact support)
+Object to or restrict certain processing
+Withdraw consent (where applicable)
+
+To exercise these rights: email support@ework.social
+9. International Transfers
+Data may be processed outside Nigeria (e.g., US/EU cloud providers). We use appropriate safeguards (e.g., Standard Contractual Clauses where required).
+10. Children
+Our service is not directed to individuals under 16. We do not knowingly collect data from children.
+11. Changes to This Policy
+We may update this policy. Significant changes will be notified via email or in-app notice.
+12. Contact Us
+Questions? Reach out:
+Email: support@ai-digitalservices.com
+Website: www.ework.social
+Company: AI Digital Services, Lagos, Nigeria
