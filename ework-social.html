@@ -1,742 +1,1040 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eWork Social – Social Media Management for African Agencies</title>
-  <meta name="description" content="Schedule posts, manage clients, auto-respond and grow your agency with eWork Social. Built for African digital agencies." />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FGCRQK0X8Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FGCRQK0X8Y');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eWork Social — AI Operating System for Social Media Teams</title>
+  <meta name="description" content="eWork Social is an AI-powered social media operating system for agencies, freelancers and brands. Plan campaigns, create content, publish, manage conversations, organize clients and understand performance from one workspace.">
+  <meta name="theme-color" content="#0b1220">
+
   <style>
     :root {
-      --blue: #2563eb;
-      --blue-dark: #1d4ed8;
-      --blue-light: #eff6ff;
-      --slate-900: #0f172a;
-      --slate-800: #1e293b;
-      --slate-700: #334155;
-      --slate-500: #64748b;
-      --slate-300: #cbd5e1;
-      --slate-100: #f1f5f9;
-      --white: #ffffff;
-      --green: #22c55e;
-      --yellow: #f59e0b;
-      --radius: 16px;
+      --bg: #07111f;
+      --bg-2: #0b1728;
+      --surface: #101d30;
+      --surface-2: #13243a;
+      --text: #f8fafc;
+      --muted: #9aa9bd;
+      --line: rgba(255,255,255,.10);
+      --primary: #4f8cff;
+      --primary-2: #7c5cff;
+      --accent: #59d6a4;
+      --white: #fff;
+      --max: 1180px;
+      --radius: 22px;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--slate-800); background: var(--white); line-height: 1.6; }
-    h1,h2,h3,h4,h5 { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
 
     /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--slate-100);
-      padding: 0 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,17,31,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo-icon {
-      width: 38px; height: 38px; background: var(--blue); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
-    .nav-logo-text { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--slate-900); }
-    .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a { text-decoration: none; color: var(--slate-600); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-cta {
-      background: var(--blue); color: white; padding: 10px 22px;
-      border-radius: 10px; text-decoration: none; font-weight: 600;
-      font-size: 0.875rem; transition: background 0.2s;
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
     }
-    .nav-cta:hover { background: var(--blue-dark); }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 30px rgba(79,140,255,.25);
+    }
+
+    .brand-name { font-size: 1.08rem; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta,
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary);
+      color: white;
+      padding: 11px 18px;
+      border-radius: 11px;
+      font-weight: 750;
+      transition: .2s ease;
+    }
+
+    .nav-cta:hover,
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(79,140,255,.25);
+    }
 
     /* HERO */
     .hero {
-      padding: 140px 5% 100px;
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%);
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.3) 0%, transparent 70%);
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(37,99,235,0.2); border: 1px solid rgba(37,99,235,0.4);
-      color: #93c5fd; padding: 6px 16px; border-radius: 100px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
-      text-transform: uppercase; margin-bottom: 28px;
-    }
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800;
-      color: white; line-height: 1.15; margin-bottom: 24px;
       position: relative;
+      padding: 105px 0 92px;
+      overflow: hidden;
     }
-    .hero h1 span { color: #60a5fa; }
-    .hero p {
-      font-size: 1.15rem; color: #94a3b8; max-width: 600px;
-      margin: 0 auto 40px; position: relative;
-    }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
-    .btn-primary {
-      background: var(--blue); color: white; padding: 14px 28px;
-      border-radius: 12px; text-decoration: none; font-weight: 600;
-      font-size: 0.95rem; transition: all 0.2s; display: inline-flex;
-      align-items: center; gap: 8px;
-    }
-    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,99,235,0.4); }
-    .btn-ghost {
-      background: rgba(255,255,255,0.1); color: white; padding: 14px 28px;
-      border-radius: 12px; text-decoration: none; font-weight: 600;
-      font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.2s;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.15); }
-    .hero-note { margin-top: 20px; color: #64748b; font-size: 0.82rem; position: relative; }
 
-    /* STATS */
-    .stats {
-      background: var(--slate-900); padding: 48px 5%;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      left: 50%;
+      top: -410px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(79,140,255,.22), transparent 68%);
+      pointer-events: none;
     }
-    .stat {
-      text-align: center; padding: 24px;
-      border-right: 1px solid rgba(255,255,255,0.08);
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 70px;
     }
-    .stat:last-child { border-right: none; }
-    .stat-number { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: white; }
-    .stat-label { color: #64748b; font-size: 0.85rem; margin-top: 4px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid rgba(89,214,164,.25);
+      background: rgba(89,214,164,.08);
+      color: #9aefca;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.3rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      max-width: 760px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #79a8ff, #a88cff, #69dfb0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-weight: 700;
+    }
+
+    .btn-secondary:hover { background: rgba(255,255,255,.08); }
+
+    .hero-note {
+      margin-top: 16px;
+      color: #6f8097;
+      font-size: .82rem;
+    }
+
+    /* PRODUCT PREVIEW */
+    .product-window {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+      padding: 10px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px 13px;
+    }
+
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #526177; }
+
+    .dashboard {
+      min-height: 430px;
+      border-radius: 16px;
+      background: #0b1525;
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .dash-title strong { display: block; font-size: 1rem; }
+    .dash-title span { color: var(--muted); font-size: .72rem; }
+
+    .ai-chip {
+      height: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #bcaeff;
+      background: rgba(124,92,255,.12);
+      border: 1px solid rgba(124,92,255,.24);
+      font-size: .68rem;
+      font-weight: 800;
+    }
+
+    .agent-box {
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(79,140,255,.14), rgba(124,92,255,.10));
+      border: 1px solid rgba(79,140,255,.20);
+      margin-bottom: 14px;
+    }
+
+    .agent-box small { color: #9db7df; font-weight: 700; }
+    .agent-box h3 { margin-top: 4px; font-size: 1.05rem; }
+
+    .agent-actions {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .agent-actions span {
+      padding: 9px;
+      text-align: center;
+      border-radius: 9px;
+      background: rgba(255,255,255,.06);
+      color: #bdc9da;
+      font-size: .68rem;
+    }
+
+    .dash-cards {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 10px;
+    }
+
+    .dash-card {
+      min-height: 105px;
+      padding: 14px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+    }
+
+    .dash-card span { color: #718299; font-size: .68rem; }
+    .dash-card strong { display: block; margin-top: 8px; font-size: 1rem; }
 
     /* SECTION */
-    section { padding: 96px 5%; }
-    .section-tag {
-      display: inline-block; background: var(--blue-light); color: var(--blue);
-      padding: 4px 14px; border-radius: 100px; font-size: 0.78rem;
-      font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--slate-900); margin-bottom: 16px; }
-    .section-sub { color: var(--slate-500); font-size: 1.05rem; max-width: 560px; }
-    .section-header { margin-bottom: 56px; }
+    section { padding: 100px 0; }
 
-    /* FEATURES */
-    .features { background: var(--white); }
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .feature-card {
-      background: var(--slate-100); border-radius: var(--radius);
-      padding: 32px; transition: all 0.2s;
-      border: 1px solid transparent;
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 45px;
     }
-    .feature-card:hover { background: white; border-color: var(--slate-300); box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 20px;
-    }
-    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--slate-900); }
-    .feature-card p { color: var(--slate-500); font-size: 0.9rem; line-height: 1.65; }
 
-    /* PLATFORMS */
-    .platforms { background: var(--slate-100); }
-    .platforms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .platform-card {
-      background: white; border-radius: 14px; padding: 24px;
-      text-align: center; border: 1px solid var(--slate-200);
-      transition: all 0.2s;
+    .section-label {
+      color: #8eb2ff;
+      font-size: .75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
     }
-    .platform-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .platform-card .icon { font-size: 2rem; margin-bottom: 10px; }
-    .platform-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--slate-800); }
-    .platform-badge {
-      display: inline-block; padding: 2px 10px; border-radius: 100px;
-      font-size: 0.7rem; font-weight: 600; margin-top: 8px;
-    }
-    .badge-live { background: #dcfce7; color: #16a34a; }
-    .badge-soon { background: #fef9c3; color: #a16207; }
-    .badge-road { background: #f1f5f9; color: #64748b; }
 
-    /* PRICING */
-    .pricing { background: white; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .price-card {
-      border: 2px solid var(--slate-200); border-radius: var(--radius);
-      padding: 32px; position: relative; transition: all 0.2s;
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
     }
-    .price-card:hover { border-color: var(--blue); box-shadow: 0 8px 32px rgba(37,99,235,0.12); }
-    .price-card.featured {
-      border-color: var(--blue); background: var(--blue);
-      color: white;
-    }
-    .price-badge {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--yellow); color: white; padding: 4px 16px;
-      border-radius: 100px; font-size: 0.75rem; font-weight: 700;
-      white-space: nowrap;
-    }
-    .price-name { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .price-amount { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 2.2rem; font-weight: 800; margin-bottom: 4px; }
-    .price-period { font-size: 0.8rem; opacity: 0.7; margin-bottom: 24px; }
-    .price-features { list-style: none; margin-bottom: 28px; }
-    .price-features li { font-size: 0.875rem; padding: 6px 0; display: flex; align-items: center; gap: 8px; opacity: 0.85; }
-    .price-features li::before { content: '✓'; font-weight: 700; color: var(--green); }
-    .price-card.featured .price-features li::before { color: #86efac; }
-    .price-btn {
-      display: block; text-align: center; padding: 12px;
-      border-radius: 10px; font-weight: 600; font-size: 0.875rem;
-      text-decoration: none; transition: all 0.2s;
-    }
-    .price-btn-default { background: var(--slate-100); color: var(--slate-800); }
-    .price-btn-default:hover { background: var(--blue); color: white; }
-    .price-btn-featured { background: white; color: var(--blue); }
-    .price-btn-featured:hover { background: var(--blue-light); }
 
-    /* AFRICA SECTION */
-    .africa {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: white; text-align: center;
+    .section-copy {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 1rem;
     }
-    .africa .section-title { color: white; }
-    .africa .section-sub { color: #94a3b8; margin: 0 auto 48px; }
-    .africa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .africa-card {
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius); padding: 28px; text-align: left;
-    }
-    .africa-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: white; }
-    .africa-card p { color: #94a3b8; font-size: 0.875rem; }
 
-    /* LEGAL SECTIONS */
-    .legal-section {
-      background: var(--slate-100); padding: 80px 5%;
+    /* PROBLEM */
+    .problem {
+      background: #091526;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
-    .legal-box {
-      max-width: 860px; margin: 0 auto;
-      background: white; border-radius: var(--radius);
-      padding: 48px; border: 1px solid var(--slate-200);
-    }
-    .legal-box h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; color: var(--slate-900); }
-    .legal-box .last-updated { color: var(--slate-500); font-size: 0.85rem; margin-bottom: 32px; }
-    .legal-box h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: var(--slate-800); }
-    .legal-box p { color: var(--slate-600); font-size: 0.925rem; line-height: 1.75; margin-bottom: 14px; }
-    .legal-box ul { padding-left: 20px; margin-bottom: 14px; }
-    .legal-box ul li { color: var(--slate-600); font-size: 0.925rem; line-height: 1.75; margin-bottom: 6px; }
-    .legal-box a { color: var(--blue); }
-    .legal-divider { border: none; border-top: 1px solid var(--slate-200); margin: 48px 0; }
 
-    /* SIGNUP */
-    .signup { background: white; text-align: center; }
-    .signup-box {
-      max-width: 560px; margin: 0 auto;
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      border-radius: 24px; padding: 56px 48px; color: white;
+    .problem-grid,
+    .capability-grid,
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
-    .signup-box h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
-    .signup-box p { color: #94a3b8; margin-bottom: 32px; }
-    .signup-form { display: flex; flex-direction: column; gap: 12px; }
-    .signup-form input {
-      padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.1); color: white; font-size: 0.95rem;
-      font-family: 'DM Sans', sans-serif;
+
+    .problem-card,
+    .capability-card,
+    .audience-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.035);
+      padding: 27px;
     }
-    .signup-form input::placeholder { color: rgba(255,255,255,0.4); }
-    .signup-form input:focus { outline: none; border-color: #60a5fa; }
-    .signup-form button {
-      padding: 14px; background: var(--blue); color: white; border: none;
-      border-radius: 10px; font-weight: 700; font-size: 0.95rem;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      transition: background 0.2s;
+
+    .problem-card .number {
+      color: #6d84a4;
+      font-size: .75rem;
+      font-weight: 800;
     }
-    .signup-form button:hover { background: var(--blue-dark); }
-    .signup-note { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 12px; }
+
+    .problem-card h3,
+    .capability-card h3,
+    .audience-card h3 {
+      margin-top: 12px;
+      font-size: 1.08rem;
+    }
+
+    .problem-card p,
+    .capability-card p,
+    .audience-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* AI AGENT */
+    .agent-section {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(124,92,255,.13), transparent 30%),
+        var(--bg);
+    }
+
+    .agent-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .workflow {
+      display: grid;
+      gap: 10px;
+    }
+
+    .workflow-step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .workflow-step b {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: rgba(79,140,255,.12);
+      color: #91b5ff;
+      font-size: .8rem;
+    }
+
+    .workflow-step strong { font-size: .9rem; }
+    .workflow-step span { display: block; color: var(--muted); font-size: .76rem; margin-top: 2px; }
+
+    /* CAPABILITIES */
+    .capabilities { background: #091526; }
+
+    .capability-card {
+      background: #0d1a2c;
+      min-height: 190px;
+    }
+
+    .capability-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(79,140,255,.10);
+      font-size: 1.15rem;
+    }
+
+    /* CREATIVE HUB */
+    .creative {
+      background: linear-gradient(135deg, #10172b, #111d32);
+    }
+
+    .creative-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .creative-preview {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 9px;
+    }
+
+    .asset {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(79,140,255,.45), rgba(124,92,255,.20)),
+        #16263c;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .asset:nth-child(2) { background: linear-gradient(135deg, rgba(89,214,164,.38), rgba(79,140,255,.16)), #16263c; }
+    .asset:nth-child(3) { background: linear-gradient(135deg, rgba(255,180,90,.35), rgba(124,92,255,.18)), #16263c; }
+    .asset:nth-child(4) { background: linear-gradient(135deg, rgba(255,110,150,.30), rgba(79,140,255,.18)), #16263c; }
+    .asset:nth-child(5) { background: linear-gradient(135deg, rgba(124,92,255,.38), rgba(89,214,164,.16)), #16263c; }
+    .asset:nth-child(6) { background: linear-gradient(135deg, rgba(79,140,255,.34), rgba(255,180,90,.16)), #16263c; }
+
+    .asset::after {
+      content: "Asset";
+      position: absolute;
+      left: 8px;
+      bottom: 7px;
+      color: rgba(255,255,255,.7);
+      font-size: .62rem;
+    }
+
+    .addon {
+      display: inline-flex;
+      margin-top: 22px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(124,92,255,.12);
+      border: 1px solid rgba(124,92,255,.22);
+      color: #bcaeff;
+      font-size: .72rem;
+      font-weight: 800;
+    }
+
+    /* PLATFORM */
+    .platforms {
+      background: var(--bg);
+    }
+
+    .platform-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .platform {
+      padding: 11px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+      color: #c3cfdf;
+      font-size: .82rem;
+    }
+
+    .platform.live {
+      border-color: rgba(89,214,164,.25);
+      color: #a4edcc;
+      background: rgba(89,214,164,.06);
+    }
+
+    .platform-note {
+      margin-top: 18px;
+      color: #6f8097;
+      font-size: .8rem;
+    }
+
+    /* AUDIENCE */
+    .audience {
+      background: #091526;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 110px 0;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(79,140,255,.18), transparent 42%),
+        var(--bg);
+    }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta h2 { max-width: 700px; margin: 0 auto; }
+
+    .cta p {
+      max-width: 620px;
+      margin: 18px auto 0;
+      color: var(--muted);
+    }
+
+    .cta .hero-actions { justify-content: center; }
 
     /* FOOTER */
     footer {
-      background: var(--slate-900); color: #94a3b8;
-      padding: 64px 5% 32px;
+      border-top: 1px solid var(--line);
+      padding: 48px 0 28px;
+      background: #050c16;
     }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand p { font-size: 0.875rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
-    .footer-col h4 { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
-    .footer-col a { display: block; color: #64748b; text-decoration: none; font-size: 0.875rem; margin-bottom: 10px; transition: color 0.2s; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand p {
+      max-width: 350px;
+      margin-top: 13px;
+      color: #72839a;
+      font-size: .86rem;
+    }
+
+    .footer-col h4 {
+      font-size: .82rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+      margin-bottom: 9px;
+      color: #72839a;
+      font-size: .82rem;
+    }
+
     .footer-col a:hover { color: white; }
+
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.8rem; color: #475569;
+      margin-top: 38px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #526177;
+      font-size: .75rem;
     }
-    .footer-bottom a { color: #475569; text-decoration: none; }
-    .footer-bottom a:hover { color: white; }
 
-    /* COMPANY INFO BOX */
-    .company-info {
-      background: var(--blue-light); border: 1px solid #bfdbfe;
-      border-radius: 12px; padding: 20px 24px; margin-bottom: 32px;
-      display: flex; align-items: flex-start; gap: 14px;
-    }
-    .company-info-icon { font-size: 1.5rem; margin-top: 2px; }
-    .company-info p { font-size: 0.875rem; color: var(--slate-700); line-height: 1.6; }
-    .company-info strong { color: var(--blue); }
-
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .features-grid, .platforms-grid, .pricing-grid, .africa-grid { grid-template-columns: 1fr 1fr; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
+      .hero-grid,
+      .agent-layout,
+      .creative-layout { grid-template-columns: 1fr; }
+      .problem-grid,
+      .capability-grid,
+      .audience-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding-top: 75px; }
     }
-    @media (max-width: 600px) {
-      .features-grid, .platforms-grid, .pricing-grid, .africa-grid, .stats { grid-template-columns: 1fr; }
+
+    @media (max-width: 620px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+      section { padding: 75px 0; }
+      .problem-grid,
+      .capability-grid,
+      .audience-grid,
       .footer-grid { grid-template-columns: 1fr; }
-      .hero { padding: 120px 5% 72px; }
-      .legal-box { padding: 28px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { width: 100%; }
+      .dashboard { min-height: 360px; }
+      .footer-bottom { flex-direction: column; }
+      .nav-cta { padding: 9px 13px; font-size: .8rem; }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">⚡</div>
-    <span class="nav-logo-text">eWork Social</span>
-  </a>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#platforms">Platforms</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#privacy">Privacy</a>
-    <a href="#terms">Terms</a>
-  </div>
-  <a href="#signup" class="nav-cta">Get Started Free</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-badge">🌍 Built for African Agencies</div>
-  <h1>Manage All Your Social Media<br/><span>in One Powerful Dashboard</span></h1>
-  <p>Schedule posts · Auto-respond to DMs · Manage clients · Analyze performance · Scale your agency — all from one workspace.</p>
-  <div class="hero-btns">
-    <a href="#signup" class="btn-primary">🚀 Start 7-Day Free Trial</a>
-    <a href="#features" class="btn-ghost">See Features →</a>
-  </div>
-  <p class="hero-note">No credit card required · Cancel anytime · 7-day free trial</p>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Social Platforms</div></div>
-  <div class="stat"><div class="stat-number">4</div><div class="stat-label">Subscription Plans</div></div>
-  <div class="stat"><div class="stat-number">₦5K</div><div class="stat-label">Starting Price/Month</div></div>
-  <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Auto-Responder</div></div>
-</div>
-
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="section-header">
-    <div class="section-tag">Features</div>
-    <h2 class="section-title">Everything your agency needs to scale</h2>
-    <p class="section-sub">From scheduling to CRM to billing — eWork Social handles it all so you can focus on growing.</p>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#eff6ff">📅</div>
-      <h3>Smart Post Scheduler</h3>
-      <p>Schedule posts across 10+ platforms. Bulk upload, content calendar view, and queue management — all in one place.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#f0fdf4">🤖</div>
-      <h3>Auto-Responder Engine</h3>
-      <p>Set keyword triggers and auto-reply to comments and DMs instantly. Never miss a lead again — even while you sleep.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#fefce8">👥</div>
-      <h3>CRM & Client Pipeline</h3>
-      <p>Manage leads, clients, notes, and tasks. Move prospects through your pipeline with a visual Kanban board.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#fdf4ff">📊</div>
-      <h3>Analytics Dashboard</h3>
-      <p>Track engagement, reach, follower growth, and post performance across all platforms with beautiful charts.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#fff7ed">🏷️</div>
-      <h3>White-Label Dashboard</h3>
-      <p>Agency Pro users can brand the entire platform with their logo and custom domain — your agency, your brand.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#f0fdf4">💳</div>
-      <h3>Team Management</h3>
-      <p>Invite team members with different roles — Owner, Admin, Editor, Viewer. Collaborate without chaos.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PLATFORMS -->
-<section class="platforms" id="platforms">
-  <div class="section-header">
-    <div class="section-tag">Platforms</div>
-    <h2 class="section-title">Connect all your social accounts</h2>
-    <p class="section-sub">Phase 1 covers Facebook & Instagram. More platforms rolling out through 2026.</p>
-  </div>
-  <div class="platforms-grid">
-    <div class="platform-card">
-      <div class="icon">📘</div>
-      <h4>Facebook</h4>
-      <span class="platform-badge badge-live">✓ Live</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">📸</div>
-      <h4>Instagram</h4>
-      <span class="platform-badge badge-live">✓ Live</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">💼</div>
-      <h4>LinkedIn</h4>
-      <span class="platform-badge badge-soon">Coming Soon</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">🐦</div>
-      <h4>Twitter / X</h4>
-      <span class="platform-badge badge-soon">Coming Soon</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">🎵</div>
-      <h4>TikTok</h4>
-      <span class="platform-badge badge-soon">Coming Soon</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">▶️</div>
-      <h4>YouTube</h4>
-      <span class="platform-badge badge-road">Roadmap</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">💬</div>
-      <h4>WhatsApp Business</h4>
-      <span class="platform-badge badge-road">Roadmap</span>
-    </div>
-    <div class="platform-card">
-      <div class="icon">🧵</div>
-      <h4>Threads</h4>
-      <span class="platform-badge badge-road">Roadmap</span>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="section-header">
-    <div class="section-tag">Pricing</div>
-    <h2 class="section-title">Simple, transparent pricing</h2>
-    <p class="section-sub">Start free. Upgrade when you're ready. No hidden fees, no surprises.</p>
-  </div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-name">Free Trial</div>
-      <div class="price-amount">₦0</div>
-      <div class="price-period">7 days · No credit card</div>
-      <ul class="price-features">
-        <li>3 social accounts</li>
-        <li>Facebook + Instagram</li>
-        <li>50 posts/month</li>
-        <li>1 workspace</li>
-        <li>1 team member</li>
-        <li>7-day analytics</li>
-      </ul>
-      <a href="#signup" class="price-btn price-btn-default">Start Free Trial</a>
-    </div>
-    <div class="price-card featured">
-      <div class="price-badge">Most Popular</div>
-      <div class="price-name">Starter</div>
-      <div class="price-amount">₦5,000</div>
-      <div class="price-period">per month</div>
-      <ul class="price-features">
-        <li>10 social accounts</li>
-        <li>4 platforms</li>
-        <li>200 posts/month</li>
-        <li>Basic CRM</li>
-        <li>Remove watermark</li>
-        <li>30-day analytics</li>
-      </ul>
-      <a href="#signup" class="price-btn price-btn-featured">Get Started</a>
-    </div>
-    <div class="price-card">
-      <div class="price-badge" style="background:#22c55e">Best Value</div>
-      <div class="price-name">Growth</div>
-      <div class="price-amount">₦12,000</div>
-      <div class="price-period">per month</div>
-      <ul class="price-features">
-        <li>30 social accounts</li>
-        <li>6 platforms</li>
-        <li>2,000 posts/month</li>
-        <li>Full CRM + pipeline</li>
-        <li>5 team members</li>
-        <li>6-month analytics</li>
-      </ul>
-      <a href="#signup" class="price-btn price-btn-default">Get Started</a>
-    </div>
-    <div class="price-card">
-      <div class="price-name">Agency Pro</div>
-      <div class="price-amount">₦29,000</div>
-      <div class="price-period">per month</div>
-      <ul class="price-features">
-        <li>100 social accounts</li>
-        <li>All 10+ platforms</li>
-        <li>10,000 posts/month</li>
-        <li>White-label dashboard</li>
-        <li>15 team members</li>
-        <li>Full rules engine</li>
-      </ul>
-      <a href="#signup" class="price-btn price-btn-default">Get Started</a>
-    </div>
-  </div>
-</section>
-
-<!-- AFRICA FIRST -->
-<section class="africa">
-  <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#93c5fd">Africa-First</div>
-  <h2 class="section-title">Built for African agencies, ready for the world</h2>
-  <p class="section-sub">eWork Social is designed with African agencies in mind — local pricing, local payment methods, local context.</p>
-  <div class="africa-grid">
-    <div class="africa-card">
-      <h4>💳 Local Payments</h4>
-      <p>Pay with cards, bank transfer, USSD, or mobile money via Paystack. NGN, KES, GHS, ZAR supported.</p>
-    </div>
-    <div class="africa-card">
-      <h4>🌍 Multi-Currency</h4>
-      <p>Pricing in Nigerian Naira with support for other African currencies. No dollar conversion fees.</p>
-    </div>
-    <div class="africa-card">
-      <h4>📱 WhatsApp Integration</h4>
-      <p>Get notifications and reminders via WhatsApp — the #1 communication platform in Africa.</p>
-    </div>
-    <div class="africa-card">
-      <h4>⚡ Low Bandwidth Mode</h4>
-      <p>Optimized for slower connections. eWork Social works smoothly even on 3G networks.</p>
-    </div>
-    <div class="africa-card">
-      <h4>🕐 Timezone Smart</h4>
-      <p>Auto-detects your timezone for optimal post scheduling — Lagos, Nairobi, Accra and beyond.</p>
-    </div>
-    <div class="africa-card">
-      <h4>🎯 Regional Templates</h4>
-      <p>Content templates and holiday calendars tailored for Nigerian, Kenyan, and Ghanaian markets.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PRIVACY POLICY -->
-<section class="legal-section" id="privacy">
-  <div class="legal-box">
-    <div class="company-info">
-      <div class="company-info-icon">🏢</div>
-      <p><strong>Ai digital Services</strong> · 1 St Christopher Close, Co-operative Villa Road, Badore, Eti-Osa, Lagos, 101245, Nigeria · <strong>Product:</strong> eWork Social (eworksocial) · <strong>Website:</strong> ai-digitalservices.com/ework-social.html</p>
-    </div>
-    <h2>Privacy Policy</h2>
-    <p class="last-updated">Last updated: March 4, 2026</p>
-
-    <h3>1. Introduction</h3>
-    <p>Welcome to eWork Social, a product of <strong>Ai digital Services</strong> ("we," "our," or "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our social media management platform.</p>
-    <p>By using eWork Social, you agree to the collection and use of information in accordance with this policy. If you do not agree with the terms of this Privacy Policy, please do not access or use our platform.</p>
-
-    <h3>2. Company Information</h3>
-    <p><strong>Business Name:</strong> Ai digital Services<br/>
-    <strong>Product Name:</strong> eWork Social<br/>
-    <strong>Address:</strong> 1 St Christopher Close, Co-operative Villa Road, Badore, Eti-Osa, Lagos, 101245, Nigeria<br/>
-    <strong>Website:</strong> https://www.ai-digitalservices.com/ework-social.html<br/>
-    <strong>Contact Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abdbd9c2ddcac8d2ebcac286cfc2ccc2dfcac7d8ced9ddc2c8ced885c8c4c6">[email&#160;protected]</a></p>
-
-    <h3>3. Information We Collect</h3>
-    <p>We collect information you provide directly to us, including:</p>
-    <ul>
-      <li><strong>Account Information:</strong> Name, email address, password, and workspace name when you register.</li>
-      <li><strong>Profile Information:</strong> Business name, logo, and contact details you add to your profile.</li>
-      <li><strong>Social Media Account Data:</strong> Access tokens, account IDs, and profile information from connected social media accounts (Facebook, Instagram, and others).</li>
-      <li><strong>Content Data:</strong> Posts, images, videos, captions, and schedules you create within the platform.</li>
-      <li><strong>Client Data:</strong> Information about your clients that you store in our CRM module.</li>
-      <li><strong>Payment Information:</strong> Billing details processed securely through Paystack. We do not store full card numbers.</li>
-      <li><strong>Usage Data:</strong> Log files, IP addresses, browser type, pages visited, and time spent on the platform.</li>
-    </ul>
-
-    <h3>4. How We Use Facebook and Instagram Data</h3>
-    <p>eWork Social integrates with Facebook and Instagram via the Meta Platform APIs. When you connect your Facebook or Instagram account, we:</p>
-    <ul>
-      <li>Access your Facebook Pages and Instagram Business accounts you authorize.</li>
-      <li>Publish posts, stories, and content on your behalf when you schedule them.</li>
-      <li>Read comments, messages, and interactions to power our Auto-Responder feature.</li>
-      <li>Retrieve analytics and insights data to display in your Analytics Dashboard.</li>
-      <li>Store your access tokens securely to maintain your connected account sessions.</li>
-    </ul>
-    <p><strong>We do not:</strong> Sell your Facebook or Instagram data to third parties. We do not use your social media data for advertising purposes. We only access data you explicitly authorize through Meta's OAuth consent flow.</p>
-    <p>Your use of Facebook and Instagram data through our platform is also subject to <a href="https://www.facebook.com/policy.php" target="_blank">Meta's Privacy Policy</a> and <a href="https://developers.facebook.com/terms/" target="_blank">Meta's Platform Terms</a>.</p>
-
-    <h3>5. How We Use Your Information</h3>
-    <p>We use the information we collect to:</p>
-    <ul>
-      <li>Provide, operate, and improve the eWork Social platform.</li>
-      <li>Process your subscription payments and send billing receipts.</li>
-      <li>Send you service-related communications, updates, and support messages.</li>
-      <li>Monitor and analyze usage patterns to improve user experience.</li>
-      <li>Detect, prevent, and address fraud and security issues.</li>
-      <li>Comply with legal obligations.</li>
-    </ul>
-
-    <h3>6. Data Sharing and Disclosure</h3>
-    <p>We do not sell, trade, or rent your personal information to third parties. We may share your data with:</p>
-    <ul>
-      <li><strong>Service Providers:</strong> Paystack (payment processing), Vercel/Railway (hosting), Supabase (database), Resend (email).</li>
-      <li><strong>Meta Platforms:</strong> When publishing content to your connected Facebook and Instagram accounts.</li>
-      <li><strong>Legal Requirements:</strong> When required by law, court order, or government authority.</li>
-    </ul>
-
-    <h3>7. Data Retention</h3>
-    <p>We retain your data for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data at any time by contacting <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="30404259465153497051591d5459575944515c43554246595355431e535f5d">[email&#160;protected]</a>. We will process deletion requests within 30 days.</p>
-
-    <h3>8. Data Security</h3>
-    <p>We implement industry-standard security measures including SSL/TLS encryption, JWT authentication, bcrypt password hashing, and regular security audits. However, no method of transmission over the Internet is 100% secure.</p>
-
-    <h3>9. Your Rights</h3>
-    <p>You have the right to:</p>
-    <ul>
-      <li>Access the personal data we hold about you.</li>
-      <li>Request correction of inaccurate data.</li>
-      <li>Request deletion of your data.</li>
-      <li>Withdraw consent for data processing at any time.</li>
-      <li>Export your data in a portable format.</li>
-      <li>Lodge a complaint with your local data protection authority.</li>
-    </ul>
-
-    <h3>10. Cookies</h3>
-    <p>We use essential cookies for authentication and session management, and analytics cookies to understand platform usage. You can control cookies through your browser settings.</p>
-
-    <h3>11. Children's Privacy</h3>
-    <p>eWork Social is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us immediately.</p>
-
-    <h3>12. Changes to This Policy</h3>
-    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by email or by posting a notice on our platform. Your continued use of eWork Social after changes constitutes acceptance of the updated policy.</p>
-
-    <h3>13. Contact Us</h3>
-    <p>For privacy-related questions or requests, contact us at:<br/>
-    <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f585879c8394968cb5949cd8919c929c819499869087839c969086db969a98">[email&#160;protected]</a><br/>
-    <strong>Address:</strong> Ai digital Services, 1 St Christopher Close, Co-operative Villa Road, Badore, Eti-Osa, Lagos, 101245, Nigeria</p>
-  </div>
-</section>
-
-<!-- TERMS OF SERVICE -->
-<section style="background:white; padding: 80px 5%;" id="terms">
-  <div class="legal-box" style="border-color: var(--slate-200); box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
-    <div class="company-info">
-      <div class="company-info-icon">📋</div>
-      <p><strong>Ai digital Services</strong> · eWork Social Platform · Lagos, Nigeria · By using eWork Social you agree to these terms.</p>
-    </div>
-    <h2>Terms of Service</h2>
-    <p class="last-updated">Last updated: March 4, 2026</p>
-
-    <h3>1. Acceptance of Terms</h3>
-    <p>By accessing or using eWork Social ("the Platform"), a product of <strong>Ai digital Services</strong>, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Platform.</p>
-
-    <h3>2. Description of Service</h3>
-    <p>eWork Social is a social media management platform that allows digital agencies and businesses to schedule social media posts, manage client relationships, automate responses, and analyze social media performance across multiple platforms.</p>
-
-    <h3>3. Account Registration</h3>
-    <ul>
-      <li>You must provide accurate and complete information when creating an account.</li>
-      <li>You are responsible for maintaining the security of your account credentials.</li>
-      <li>You must be at least 18 years old to use this service.</li>
-      <li>One person may not maintain more than one free account.</li>
-    </ul>
-
-    <h3>4. Subscription Plans and Payment</h3>
-    <p>eWork Social offers the following subscription tiers:</p>
-    <ul>
-      <li><strong>Free Trial:</strong> 7-day trial with limited features. No credit card required.</li>
-      <li><strong>Starter:</strong> ₦5,000/month — 10 social accounts, 200 posts/month.</li>
-      <li><strong>Growth:</strong> ₦12,000/month — 30 social accounts, 2,000 posts/month.</li>
-      <li><strong>Agency Pro:</strong> ₦29,000/month — 100 social accounts, 10,000 posts/month.</li>
-    </ul>
-    <p>Payments are processed securely through Paystack. Subscriptions renew automatically each month unless cancelled. You may cancel your subscription at any time from your account settings.</p>
-
-    <h3>5. Acceptable Use Policy</h3>
-    <p>You agree NOT to use eWork Social to:</p>
-    <ul>
-      <li>Publish spam, unsolicited messages, or misleading content.</li>
-      <li>Violate any applicable laws or regulations.</li>
-      <li>Infringe on the intellectual property rights of others.</li>
-      <li>Publish hate speech, harassment, or discriminatory content.</li>
-      <li>Attempt to hack, reverse-engineer, or disrupt the platform.</li>
-      <li>Violate Meta's Platform Terms or any connected social network's terms of service.</li>
-      <li>Use the platform to publish content that is illegal in Nigeria or your jurisdiction.</li>
-    </ul>
-
-    <h3>6. Social Media Platform Compliance</h3>
-    <p>By connecting your social media accounts to eWork Social, you agree to comply with the terms of service of each connected platform, including Facebook's Terms of Service, Instagram's Terms of Use, and Meta's Platform Terms. You are solely responsible for the content you publish through our platform.</p>
-
-    <h3>7. Content Ownership</h3>
-    <p>You retain full ownership of all content you create and publish through eWork Social. By using the platform, you grant Ai digital Services a limited license to store, process, and transmit your content solely for the purpose of providing the service.</p>
-
-    <h3>8. Data and Privacy</h3>
-    <p>Our collection and use of your personal data is governed by our Privacy Policy, which is incorporated into these Terms by reference. By using eWork Social, you consent to our data practices as described in the Privacy Policy.</p>
-
-    <h3>9. Service Availability</h3>
-    <p>We strive to maintain 99%+ uptime but cannot guarantee uninterrupted service. We are not liable for losses caused by service downtime, maintenance periods, or circumstances beyond our control.</p>
-
-    <h3>10. Limitation of Liability</h3>
-    <p>To the maximum extent permitted by Nigerian law, Ai digital Services shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or business opportunities, arising from your use of eWork Social.</p>
-
-    <h3>11. Termination</h3>
-    <p>We reserve the right to suspend or terminate accounts that violate these Terms of Service. You may terminate your account at any time. Upon termination, your data will be retained for 30 days before permanent deletion.</p>
-
-    <h3>12. Governing Law</h3>
-    <p>These Terms are governed by the laws of the Federal Republic of Nigeria. Any disputes shall be resolved in the courts of Lagos State, Nigeria.</p>
-
-    <h3>13. Changes to Terms</h3>
-    <p>We may modify these Terms at any time. We will provide notice of significant changes via email or platform notification. Continued use of eWork Social after changes constitutes your acceptance of the updated Terms.</p>
-
-    <h3>14. Contact</h3>
-    <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402c2527212c0021296d2429272934212c33253236292325336e232f2d">[email&#160;protected]</a><br/>
-    <strong>Address:</strong> Ai digital Services, 1 St Christopher Close, Co-operative Villa Road, Badore, Eti-Osa, Lagos, 101245, Nigeria</p>
-  </div>
-</section>
-
-<!-- SIGNUP -->
-<section class="signup" id="signup">
-  <div class="signup-box">
-    <h2>Start Your Free Trial Today</h2>
-    <p>Join agencies already using eWork Social to scale their social media management.</p>
-    <div class="signup-form">
-      <input type="text" placeholder="Your full name" />
-      <input type="email" placeholder="Work email address" />
-      <input type="text" placeholder="Agency / workspace name" />
-      <button onclick="window.location.href='https://app.eworksocial.com/register'">
-        Create Free Account →
-      </button>
-    </div>
-    <p class="signup-note">No credit card required · 7-day free trial · Cancel anytime<br/>
-    By signing up you agree to our <a href="#terms" style="color:#93c5fd">Terms of Service</a> and <a href="#privacy" style="color:#93c5fd">Privacy Policy</a></p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#" class="nav-logo" style="text-decoration:none">
-        <div class="nav-logo-icon">⚡</div>
-        <span class="nav-logo-text" style="color:white">eWork Social</span>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="eWork Social home">
+        <span class="brand-mark">⚡</span>
+        <span class="brand-name">eWork Social</span>
       </a>
-      <p>Modern social media management built for African agencies and teams. Schedule, manage, automate, and grow.</p>
-      <p style="margin-top:12px;font-size:0.8rem;color:#475569">A product of <strong style="color:#64748b">Ai digital Services</strong><br/>Lagos, Nigeria</p>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#ai-agent">AI Agent</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#creative-hub">Creative Hub</a>
+        <a href="#platforms">Platforms</a>
+      </nav>
+
+      <a class="nav-cta" href="https://app.eworksocial.com/register">Get Started</a>
     </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="#features">Features</a>
-      <a href="#platforms">Platforms</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#signup">Get Started</a>
+  </header>
+
+  <main id="home">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">✦ AI-powered social media operations</div>
+
+          <h1>
+            Stop managing social media.
+            <span class="gradient-text">Start running it.</span>
+          </h1>
+
+          <p class="hero-copy">
+            eWork Social is an AI-powered operating system for agencies, freelancers and brands.
+            Plan campaigns, create content, publish across social channels, manage conversations,
+            organize client work and learn from performance — from one workspace.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://app.eworksocial.com/register">
+              Start with eWork Social →
+            </a>
+            <a class="btn-secondary" href="#ai-agent">
+              See how the AI Agent works
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Built for modern social media teams • Africa-first roots • Designed to scale globally
+          </p>
+        </div>
+
+        <!-- Product visual -->
+        <div class="product-window" aria-label="eWork Social product preview">
+          <div class="window-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+
+          <div class="dashboard">
+            <div class="dash-top">
+              <div class="dash-title">
+                <strong>Good morning 👋</strong>
+                <span>What would you like to accomplish today?</span>
+              </div>
+              <span class="ai-chip">AI AGENT</span>
+            </div>
+
+            <div class="agent-box">
+              <small>CAMPAIGN ASSISTANT</small>
+              <h3>Launch a lead-generation campaign</h3>
+
+              <div class="agent-actions">
+                <span>Research</span>
+                <span>Create</span>
+                <span>Schedule</span>
+              </div>
+            </div>
+
+            <div class="dash-cards">
+              <div class="dash-card">
+                <span>CONTENT</span>
+                <strong>12 posts ready</strong>
+              </div>
+              <div class="dash-card">
+                <span>ENGAGEMENT</span>
+                <strong>8 conversations</strong>
+              </div>
+              <div class="dash-card">
+                <span>CRM</span>
+                <strong>14 active leads</strong>
+              </div>
+              <div class="dash-card">
+                <span>ANALYTICS</span>
+                <strong>Weekly insights</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="problem">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">The real problem</div>
+          <h2>Your social media workflow shouldn't feel like a collection of tabs.</h2>
+          <p class="section-copy">
+            Content creation, scheduling, client management, engagement and reporting are connected.
+            Your software should be connected too.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="problem-card">
+            <div class="number">01</div>
+            <h3>Too many disconnected tools</h3>
+            <p>Ideas live in one place, assets in another, approvals somewhere else and publishing on yet another platform.</p>
+          </article>
+
+          <article class="problem-card">
+            <div class="number">02</div>
+            <h3>Too much manual coordination</h3>
+            <p>Social media management becomes copy-paste work instead of a repeatable operating system.</p>
+          </article>
+
+          <article class="problem-card">
+            <div class="number">03</div>
+            <h3>Data isn't connected to action</h3>
+            <p>Analytics tell you what happened. Your workflow should help you decide what to do next.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI AGENT -->
+    <section class="agent-section" id="ai-agent">
+      <div class="container agent-layout">
+        <div>
+          <div class="section-label">The next layer</div>
+          <h2>One AI Agent. Your entire social workflow.</h2>
+          <p class="section-copy">
+            eWork Social is moving beyond individual tools. The AI Agent sits above the platform's
+            capabilities and coordinates them around an objective — so you can focus on the outcome,
+            not every individual task.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://app.eworksocial.com/register">Explore eWork Social →</a>
+          </div>
+        </div>
+
+        <div class="workflow">
+          <div class="workflow-step">
+            <b>01</b>
+            <div>
+              <strong>Give the AI an objective</strong>
+              <span>Launch a campaign, generate leads, promote a product or increase engagement.</span>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <b>02</b>
+            <div>
+              <strong>Build the strategy</strong>
+              <span>The agent turns the objective into a practical campaign and content workflow.</span>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <b>03</b>
+            <div>
+              <strong>Create and organize</strong>
+              <span>Use AI-assisted content creation, media assets, CRM context and campaign structure.</span>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <b>04</b>
+            <div>
+              <strong>Publish and engage</strong>
+              <span>Move approved content into scheduling and connect the workflow to audience interactions.</span>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <b>05</b>
+            <div>
+              <strong>Learn from performance</strong>
+              <span>Turn analytics into insights that inform the next campaign and content decision.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="capabilities" id="capabilities">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">One operating system</div>
+          <h2>The tools are still there. The workflow is smarter.</h2>
+          <p class="section-copy">
+            eWork Social brings the operational pieces of social media management into one connected environment.
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability-card">
+            <div class="capability-icon">✦</div>
+            <h3>AI Content Creation</h3>
+            <p>Create, rewrite and develop content faster with AI-assisted workflows built around your campaigns and brand context.</p>
+          </article>
+
+          <article class="capability-card">
+            <div class="capability-icon">◫</div>
+            <h3>Publishing & Scheduling</h3>
+            <p>Plan content and manage publishing from a centralized social media workspace instead of jumping between platforms.</p>
+          </article>
+
+          <article class="capability-card">
+            <div class="capability-icon">◉</div>
+            <h3>Engagement Hub</h3>
+            <p>Bring social interactions into an operational workflow so comments and conversations are easier to monitor and respond to.</p>
+          </article>
+
+          <article class="capability-card">
+            <div class="capability-icon">⌁</div>
+            <h3>CRM & Pipeline</h3>
+            <p>Keep leads, clients, notes and follow-up tasks connected to the work your social media is generating.</p>
+          </article>
+
+          <article class="capability-card">
+            <div class="capability-icon">↗</div>
+            <h3>Analytics & Insights</h3>
+            <p>Understand content performance and use the data to make better decisions about what to create next.</p>
+          </article>
+
+          <article class="capability-card">
+            <div class="capability-icon">◎</div>
+            <h3>Team & Workspace Operations</h3>
+            <p>Keep client work, accounts and collaboration organized inside a workspace designed for real social media operations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATIVE HUB -->
+    <section class="creative" id="creative-hub">
+      <div class="container creative-layout">
+        <div>
+          <div class="section-label">Creative Hub</div>
+          <h2>Your content assets belong in the workflow too.</h2>
+          <p class="section-copy">
+            Creative Hub gives teams a dedicated place to organize and discover social media assets,
+            making the jump from idea to finished content much faster.
+          </p>
+
+          <span class="addon">AVAILABLE AS A SEPARATE ADD-ON</span>
+
+          <p class="section-copy" style="font-size:.9rem;margin-top:15px;">
+            Built to work alongside eWork Social without forcing every user to pay for creative
+            infrastructure they don't need.
+          </p>
+        </div>
+
+        <div class="creative-preview">
+          <div class="asset-grid" aria-hidden="true">
+            <div class="asset"></div>
+            <div class="asset"></div>
+            <div class="asset"></div>
+            <div class="asset"></div>
+            <div class="asset"></div>
+            <div class="asset"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORMS -->
+    <section class="platforms" id="platforms">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Connected social operations</div>
+          <h2>Build once. Manage your social presence from one place.</h2>
+          <p class="section-copy">
+            Platform availability evolves as integrations move through development and approval.
+          </p>
+        </div>
+
+        <div class="platform-row">
+          <span class="platform live">✓ Facebook</span>
+          <span class="platform live">✓ Instagram</span>
+          <span class="platform">✓ Linkedin</span>
+          <span class="platform">✓ X (formally Twitter)</span>
+          <span class="platform">✓ TikTok</span>
+          <span class="platform">✓ YouTube</span>
+          <span class="platform">✓ BlueSky</span>
+          <span class="platform">✓ Threads</span>
+        </div>
+
+        <p class="platform-note">
+          Availability can depend on platform API access, account type and approval requirements.
+        </p>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="audience">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Who it's for</div>
+          <h2>Built around the way social media work actually gets done.</h2>
+        </div>
+
+        <div class="audience-grid">
+          <article class="audience-card">
+            <h3>Freelancers & Social Media Managers</h3>
+            <p>Manage multiple clients, stay consistent and spend less time coordinating repetitive publishing work.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>Small & Growing Agencies</h3>
+            <p>Bring content, client operations, engagement, CRM and reporting into a shared system as your client list grows.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>Brands & Marketing Teams</h3>
+            <p>Build a repeatable content operation without stitching together a different tool for every stage of the workflow.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container cta-inner">
+        <div class="section-label">Your social media operating system</div>
+        <h2>Less tab switching. Less manual coordination. More work that actually moves the business forward.</h2>
+        <p>
+          eWork Social is built to help modern social media teams move from publishing individual posts
+          to operating complete campaigns and workflows.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://app.eworksocial.com/register">Start with eWork Social →</a>
+          <a class="btn-secondary" href="https://app.eworksocial.com/login">Log in</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a class="brand" href="#home">
+            <span class="brand-mark">⚡</span>
+            <span class="brand-name">eWork Social</span>
+          </a>
+          <p>
+            An AI-powered social media operating system for agencies, freelancers and brands.
+            Built from African agency workflows and designed for modern teams.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#ai-agent">AI Agent</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#creative-hub">Creative Hub</a>
+          <a href="#platforms">Platforms</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Access</h4>
+          <a href="https://app.eworksocial.com/register">Create account</a>
+          <a href="https://app.eworksocial.com/login">Log in</a>
+          <a href="https://eworksocial.com">eWork Social</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="https://ai-digitalservices.com">AI Digital Services</a>
+          <a href="mailto:supports@eworksocial.com">Support</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 AI Digital Services. eWork Social. All rights reserved.</span>
+        <span>Lagos, Nigeria</span>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="https://www.ai-digitalservices.com" target="_blank">Ai digital Services</a>
-      <a href="#signup">Contact Sales</a>
-      <a href="/cdn-cgi/l/email-protection#d6beb3babab996b7bffbb2bfb1bfa2b7baa5b3a4a0bfb5b3a5f8b5b9bb"><span class="__cf_email__" data-cfemail="3d55585151527d5c541059545a54495c514e
+  </footer>
+
+</body>
+</html>
