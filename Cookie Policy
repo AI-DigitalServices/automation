@@ -1,28 +1,32 @@
-3. Cookie Policy
-eWork Social Cookie Policy
+## Cookie Policy
+Ai Digital Services (operating as Automation.Ai)
 Last Updated: March 3, 2026
-1. What Are Cookies?
-Cookies are small text files stored on your device when you visit a website. They help us provide a better experience.
-2. Cookies We Use
-Strictly Necessary
+At Ai Digital Services, we value your privacy and aim to be completely transparent about how we utilize tracking technology. This policy outlines how cookies are used to enhance your experience on our automated platform.
+## 1. What Are Cookies?
+Cookies are small configuration files saved onto your computer or mobile device when you browse online. They help sites remember options, ensure security, and provide clean interaction dynamics.
+## 2. How We Categorize Cookies
+We group cookies depending on their specific technical purpose:
 
-Authentication (session cookies)
-Security (CSRF protection)
+* Strictly Necessary: Essential tools deployed automatically to maintain basic site actions, security protections (such as CSRF validation tokens), and user login flows.
+* Performance & Analytics: Tools used exclusively to compile anonymous traffic charts, error reporting, and visitor paths (utilizing privacy-centric tools such as Plausible or Google Analytics).
+* Advertising & Marketing Signals: When active, these mechanisms communicate signals directly to platform networks (like Google Tags) to manage campaign performance tracking or ad personalization. We do not deploy these unless you actively provide explicit consent.
 
-Functional & Performance
+## 3. Google Consent Mode v2 Alignment
+In compliance with international regulations and Google's updated data frameworks, our website utilizes an integrated interactive consent barrier. When you update your choices, the system modifies these four operational permissions in real-time:
 
-Preferences (theme, language)
-Analytics (anonymous usage stats via privacy-first tools like Plausible)
+* analytics_storage (Controls tracking analytics)
+* ad_storage (Controls cookie advertising storage)
+* ad_user_data (Manages user profile traits relayed to Google networks)
+* ad_personalization (Governs tailored target-remarketing algorithms)
 
-Marketing & Third-Party
+## 4. Direct Choice Management
+You maintain absolute authority over your choices at any point:
 
-None by default. If you enable integrations (e.g., social login, tracking pixels), third-party cookies may be set by those platforms.
+* On Our Site: You can reset your permissions universally by clicking the "Manage Cookie Preferences" link embedded natively in our website footer layout.
+* Browser Control: You can set your browser preferences to universally filter, flag, or completely reject cookies. Be aware that removing baseline functional elements may disrupt structural features across your session.
 
-3. How to Manage Cookies
-You can control cookies via your browser settings. Disabling necessary cookies may limit functionality.
-4. Third-Party Cookies
-When you connect social accounts or use embedded content (videos, etc.), those platforms may set cookies. See their policies.
-5. Changes
-We may update this policy. Check back periodically.
-6. Contact
-support@ai-digitalservices.com
+## 5. Third-Party Integrations
+Some third-party tools embedded within our channels (such as social profile logins or external communication frameworks) maintain unique processing standards. We advise checking their independent compliance documentation directly.
+## 6. Get In Touch
+For data management support or further clarification regarding this implementation, reach out to our team at:
+📩 automation@ai-digitalservices.com
