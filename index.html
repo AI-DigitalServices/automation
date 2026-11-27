@@ -1068,7 +1068,7 @@
                 const existingMessage = messageField.value.trim();
                 if (!existingMessage.startsWith(serviceLine)) {
                     messageField.value = existingMessage
-                        ? serviceLine + '\\n\\n' + existingMessage
+                        ? serviceLine + ' | ' + existingMessage
                         : serviceLine;
                 }
             });
