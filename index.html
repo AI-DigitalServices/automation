@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    gtag('consent', 'default', {
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied',
-  'analytics_storage': 'denied'
-});
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FGCRQK0X8Y"></script>
+    <!-- Google Consent Mode v2 defaults must be set before the Google tag loads. -->
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
   gtag('js', new Date());
-
   gtag('config', 'G-FGCRQK0X8Y');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FGCRQK0X8Y"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ai Digital Services | Automation.Ai - Social Media Management & Automation</title>
+    <title>AI Digital Services | Automation.Ai — Digital Marketing, Websites & Automation</title>
+    <meta name="description" content="AI Digital Services helps businesses grow with digital marketing, conversion-focused WordPress websites, SEO content, and practical AI workflow automation.">
+    <link rel="canonical" href="https://www.ai-digitalservices.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Digital Services | Automation.Ai">
+    <meta property="og:description" content="Digital marketing, WordPress websites, and practical AI automation that help your business grow.">
+    <meta property="og:url" content="https://www.ai-digitalservices.com/">
     <style>
         :root {
             --primary: #00d4ff;
@@ -130,6 +135,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+        }
+
+        .mobile-menu-btn {
+            display: none;
         }
         
         .logo {
@@ -604,10 +614,37 @@
             
             nav ul {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 5%;
+                right: 5%;
+                flex-direction: column;
+                gap: 18px;
+                padding: 22px;
+                background: var(--dark);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
             }
-            
+
+            nav ul.is-open {
+                display: flex;
+            }
+
+            nav ul li {
+                margin-left: 0;
+            }
+
             .mobile-menu-btn {
-                display: block;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                color: var(--light);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                padding: 10px 12px;
+                font-size: 1.2rem;
+                cursor: pointer;
             }
         }
         
@@ -636,8 +673,11 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">Automation.<span>Ai</span></a>
-            <nav>
-                <ul>
+            <button class="mobile-menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav aria-label="Main navigation">
+                <ul id="primary-navigation">
                     <li><a href="#services">Services</a></li>
                     <li><a href="#calculator">Calculator</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
@@ -652,11 +692,11 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Automate, Optimize, and Grow Smarter</h1>
-                <p>Helping brands leverage AI-powered automation to transform their social media presence, maximize engagement, and drive measurable growth.</p>
+                <h1>Turn Digital Activity Into Business Growth</h1>
+                <p>We help businesses attract the right audience, convert more visitors, and save time with digital marketing, conversion-focused WordPress websites, and practical AI-powered workflow automation.</p>
                 <div class="hero-btns">
-                    <a href="#calculator" class="btn">Calculate Your ROI</a>
-                    <a href="#contact" class="btn btn-secondary">Get Started</a>
+                    <a href="#contact" class="btn" data-track="hero-consultation">Book a Free Consultation</a>
+                    <a href="#services" class="btn btn-secondary" data-track="hero-services">Explore Our Services</a>
                 </div>
             </div>
         </div>
@@ -672,7 +712,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Our Services</h2>
-                <p>Comprehensive social media automation solutions designed to save you time, increase engagement, and drive growth.</p>
+                <p>Practical digital growth services that connect your marketing, website, content, and everyday workflows.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -780,14 +820,15 @@
         <div class="container">
             <div class="section-header">
                 <h2>Our Work</h2>
-                <p>See how we've helped brands transform their social media presence with intelligent automation.</p>
+                <p>Explore the types of digital marketing, web, and automation projects we can help deliver. The examples below are illustrative service scenarios, not published client case studies.</p>
             </div>
+            <div class="portfolio-grid">
                 <div class="portfolio-item"> 
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce Brand"> 
                     <div class="portfolio-overlay"> 
                         <div class="portfolio-info"> 
                             <h3>E-commerce Brand</h3> 
-                            <p>Increased engagement by 240% with automated content strategy</p> 
+                            <p>Illustrative example: a consistent, automated content workflow</p> 
                         </div> 
                     </div> 
                 </div>
@@ -796,7 +837,7 @@
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
                             <h3>Tech Startup</h3>
-                            <p>Reduced response time by 85% with AI chatbot integration</p>
+                            <p>Illustrative example: faster responses with an AI-assisted FAQ flow</p>
                         </div>
                     </div>
                 </div>
@@ -805,7 +846,7 @@
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
                             <h3>Service Business</h3>
-                            <p>Generated 320% more qualified leads with automated campaigns</p>
+                            <p>Illustrative example: a streamlined lead capture and follow-up journey</p>
                         </div>
                     </div>
                 </div>
@@ -821,9 +862,9 @@
             </div>
             <div class="about-container">
                 <div class="about-content">
-                    <p>At Ai Digital Services (trading as Automation.Ai), we believe that intelligent automation is the future of social media management. Our team of experts combines cutting-edge AI technology with proven marketing strategies to deliver exceptional results for our clients.</p>
-                    <p>We specialize in creating custom automation solutions that save time, increase engagement, and drive measurable growth. Our approach is data-driven, focusing on metrics that matter to your business.</p>
-                    <p>With years of experience in social media marketing and automation technology, we've helped brands of all sizes transform their online presence and achieve their business objectives.</p>
+                    <p>Ai Digital Services (trading as Automation.Ai) helps businesses bring their digital marketing and operations together. We combine hands-on social media marketing, web content strategy, WordPress development, and workflow automation to solve practical business challenges.</p>
+                    <p>Our work focuses on clear goals: a stronger online presence, useful content, better lead capture, and less repetitive admin through well-planned automation.</p>
+                    <p>Every project starts with understanding the business, its audience, and the outcome it needs — then choosing tools and tactics that make sense for that goal.</p>
                     <a href="#contact" class="btn" style="margin-top: 20px;">Work With Us</a>
                 </div>
                 <div class="about-image">
@@ -843,7 +884,9 @@
         <div class="contact-container">
             <div class="contact-form">
                 <!-- HubSpot Form Container -->
-                <div id="hubspot-form"></div>
+                <div id="hubspot-form">
+                    <p class="form-loading" role="status">Loading our secure contact form…</p>
+                </div>
             </div>
             
             <div class="contact-info">
@@ -886,7 +929,7 @@
 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
 <script>
 // Wait for HubSpot script to load
-function initHubSpotForm() {
+function initHubSpotForm(attempt = 0) {
     if (typeof hbspt !== 'undefined' && hbspt.forms) {
         hbspt.forms.create({
             region: "na1",
@@ -940,9 +983,14 @@ function initHubSpotForm() {
                 }
             }
         });
+    } else if (attempt < 40) {
+        // Retry for up to 10 seconds, then show a direct contact fallback.
+        setTimeout(() => initHubSpotForm(attempt + 1), 250);
     } else {
-        // Retry if HubSpot hasn't loaded yet
-        setTimeout(initHubSpotForm, 100);
+        const formContainer = document.getElementById('hubspot-form');
+        if (formContainer) {
+            formContainer.innerHTML = '<p role="status">The contact form is temporarily unavailable. Please email <a href="mailto:automation@ai-digitalservices.com">automation@ai-digitalservices.com</a> and we will get back to you.</p>';
+        }
     }
 }
 
@@ -1280,14 +1328,8 @@ if (document.readyState === 'loading') {
             conversionRateInput.addEventListener('input', calculateImpact);
             averageSaleInput.addEventListener('input', calculateImpact);
             
-            // Form submission
-            const leadForm = document.getElementById('lead-form');
-            leadForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // In a real implementation, this would submit to Zapier
-                alert('Thank you for your interest! We will contact you shortly.');
-                leadForm.reset();
-            });
+            // Lead capture is handled by the HubSpot form in the Contact section.
+            // Keep the calculator focused on estimating potential missed-call revenue.
         });
     </script>
     <!-- Google Consent Banner Structure -->
@@ -1414,28 +1456,36 @@ if (document.readyState === 'loading') {
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookie-consent-banner");
-    const consentChoice = localStorage.getItem("google_consent_choice");
+    let consentChoice = null;
+    try {
+      consentChoice = localStorage.getItem("google_consent_choice");
+    } catch (error) {
+      console.warn("Cookie preferences are unavailable in this browser.");
+    }
 
-    // Display banner if visitor hasn't committed a choice yet
-    if (!consentChoice) {
-      setTimeout(() => {
-        banner.classList.remove("hidden");
-      }, 1000); // 1-second delay for smooth loading entrance
-    } else if (consentChoice === "granted") {
-      executeGoogleUpdate('granted');
+    if (consentChoice === "granted" || consentChoice === "denied") {
+      executeGoogleUpdate(consentChoice);
+    } else if (banner) {
+      setTimeout(() => banner.classList.remove("hidden"), 1000);
     }
   });
 
-  function allConsentGranted() {
-    executeGoogleUpdate('granted');
-    localStorage.setItem("google_consent_choice", "granted");
+  function saveConsentChoice(status) {
+    executeGoogleUpdate(status);
+    try {
+      localStorage.setItem("google_consent_choice", status);
+    } catch (error) {
+      console.warn("Could not save cookie preferences in this browser.");
+    }
     hideBanner();
   }
 
+  function allConsentGranted() {
+    saveConsentChoice("granted");
+  }
+
   function allConsentDenied() {
-    executeGoogleUpdate('denied');
-    localStorage.setItem("google_consent_choice", "denied");
-    hideBanner();
+    saveConsentChoice("denied");
   }
 
   // Forces the legal update parameters straight into Google Consent Mode v2
@@ -1451,12 +1501,50 @@ if (document.readyState === 'loading') {
   }
 
   function hideBanner() {
-    document.getElementById("cookie-consent-banner").classList.add("hidden");
+    const banner = document.getElementById("cookie-consent-banner");
+    if (banner) banner.classList.add("hidden");
   }
 </script>
-        <!-- Other existing scripts or sections may be here -->
+<script>
+  // Accessible mobile navigation toggle.
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".mobile-menu-btn");
+    const menu = document.getElementById("primary-navigation");
+    if (!menuButton || !menu) return;
 
-    <!-- 👇 PASTE THE COOKIE RESET SCRIPT HERE 👇 -->
+    menuButton.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+      menuButton.innerHTML = isOpen
+        ? '<i class="fas fa-times" aria-hidden="true"></i>'
+        : '<i class="fas fa-bars" aria-hidden="true"></i>';
+    });
+
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        menu.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+        menuButton.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+      }
+    });
+  });
+
+  // CTA events are sent through Google Consent Mode.
+  document.addEventListener("click", function (event) {
+    const link = event.target.closest("a[data-track]");
+    if (!link || typeof gtag !== "function") return;
+    gtag("event", "cta_click", {
+      event_category: "engagement",
+      event_label: link.getAttribute("data-track"),
+      link_url: link.href
+    });
+  });
+</script>
+        <!-- Existing site scripts -->
+
+    <!-- Cookie preference controls -->
     <script>
       function openConsentBanner(e) {
         e.preventDefault(); // Stops the page from jumping up to the top
