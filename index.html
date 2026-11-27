@@ -1059,17 +1059,50 @@
             const leadForm = document.getElementById('ework-social-form');
             if (!leadForm) return;
 
-            leadForm.addEventListener('submit', function() {
+            const submitButton = leadForm.querySelector('.ework-form-submit');
+            const originalButtonText = submitButton ? submitButton.textContent : 'Send Message';
+            let submissionStarted = false;
+
+            leadForm.addEventListener('submit', function(event) {
+                // Stop repeat clicks while the browser sends the form to eWork Social.
+                if (submissionStarted) {
+                    event.preventDefault();
+                    return;
+                }
+
                 const serviceSelect = document.getElementById('ework-service-interest');
                 const messageField = document.getElementById('ework-message');
-                if (!serviceSelect || !messageField || !serviceSelect.value) return;
+                if (serviceSelect && messageField && serviceSelect.value) {
+                    const serviceLine = 'Service interest: ' + serviceSelect.value;
+                    const existingMessage = messageField.value.trim();
+                    if (!existingMessage.startsWith(serviceLine)) {
+                        messageField.value = existingMessage
+                            ? serviceLine + ' | ' + existingMessage
+                            : serviceLine;
+                    }
+                }
 
-                const serviceLine = 'Service interest: ' + serviceSelect.value;
-                const existingMessage = messageField.value.trim();
-                if (!existingMessage.startsWith(serviceLine)) {
-                    messageField.value = existingMessage
-                        ? serviceLine + ' | ' + existingMessage
-                        : serviceLine;
+                submissionStarted = true;
+                leadForm.setAttribute('aria-busy', 'true');
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Submitting...';
+                    submitButton.setAttribute('aria-live', 'polite');
+                    submitButton.style.opacity = '0.7';
+                    submitButton.style.cursor = 'wait';
+                }
+            });
+
+            // Restore the button if a visitor returns to this page using browser navigation.
+            window.addEventListener('pageshow', function() {
+                submissionStarted = false;
+                leadForm.removeAttribute('aria-busy');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    submitButton.style.opacity = '';
+                    submitButton.style.cursor = '';
                 }
             });
         });
