@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Your enquiry has been received by AI Digital Services.">
+  <title>Thank You | AI Digital Services</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a0a0a;
+      --card: #151515;
+      --text: #f8f9fa;
+      --muted: #a1a1aa;
+      --cyan: #00d4ff;
+      --purple: #7928ca;
+      --green: #00ff88;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(0, 212, 255, .13), transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(121, 40, 202, .18), transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
+    main {
+      width: min(100%, 680px);
+      padding: clamp(32px, 7vw, 64px);
+      text-align: center;
+      background: linear-gradient(145deg, rgba(26,26,26,.98), rgba(15,15,15,.98));
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 22px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.38);
+    }
+    .mark {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #07130d;
+      background: var(--green);
+      font-size: 2.4rem;
+      font-weight: 800;
+      box-shadow: 0 0 36px rgba(0,255,136,.2);
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.1rem, 7vw, 3.4rem);
+      line-height: 1.1;
+      background: linear-gradient(90deg, var(--cyan), #b17aff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p {
+      margin: 0 auto 16px;
+      max-width: 510px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+    .note { margin-top: 24px; font-size: .95rem; }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      color: #071018;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    a:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,212,255,.18); }
+    a:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true">✓</div>
+    <h1>Thank You!</h1>
+    <p>Your enquiry has been received successfully.</p>
+    <p>A representative from AI Digital Services will review your message and get back to you as soon as possible.</p>
+    <p class="note">We appreciate your interest in working with us.</p>
+    <a href="https://www.ai-digitalservices.com/">Back to homepage</a>
+  </main>
+</body>
+</html>
