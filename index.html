@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    gtag('consent', 'default', {
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied',
-  'analytics_storage': 'denied'
-});
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FGCRQK0X8Y"></script>
+    <!-- Google Consent Mode v2 defaults must be set before the Google tag loads. -->
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
   gtag('js', new Date());
-
   gtag('config', 'G-FGCRQK0X8Y');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FGCRQK0X8Y"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ai Digital Services | Automation.Ai - Social Media Management & Automation</title>
+    <title>AI Digital Services | Automation.Ai — Digital Marketing, Websites & Automation</title>
+    <meta name="description" content="AI Digital Services helps businesses grow with digital marketing, conversion-focused WordPress websites, SEO content, and practical AI workflow automation.">
+    <link rel="canonical" href="https://www.ai-digitalservices.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Digital Services | Automation.Ai">
+    <meta property="og:description" content="Digital marketing, WordPress websites, and practical AI automation that help your business grow.">
+    <meta property="og:url" content="https://www.ai-digitalservices.com/">
     <style>
         :root {
             --primary: #00d4ff;
@@ -130,6 +135,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+        }
+
+        .mobile-menu-btn {
+            display: none;
         }
         
         .logo {
@@ -604,10 +614,37 @@
             
             nav ul {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 5%;
+                right: 5%;
+                flex-direction: column;
+                gap: 18px;
+                padding: 22px;
+                background: var(--dark);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
             }
-            
+
+            nav ul.is-open {
+                display: flex;
+            }
+
+            nav ul li {
+                margin-left: 0;
+            }
+
             .mobile-menu-btn {
-                display: block;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                color: var(--light);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                padding: 10px 12px;
+                font-size: 1.2rem;
+                cursor: pointer;
             }
         }
         
@@ -636,8 +673,11 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">Automation.<span>Ai</span></a>
-            <nav>
-                <ul>
+            <button class="mobile-menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav aria-label="Main navigation">
+                <ul id="primary-navigation">
                     <li><a href="#services">Services</a></li>
                     <li><a href="#calculator">Calculator</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
@@ -652,11 +692,11 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Automate, Optimize, and Grow Smarter</h1>
-                <p>Helping brands leverage AI-powered automation to transform their social media presence, maximize engagement, and drive measurable growth.</p>
+                <h1>Turn Digital Activity Into Business Growth</h1>
+                <p>We help businesses attract the right audience, convert more visitors, and save time with digital marketing, conversion-focused WordPress websites, and practical AI-powered workflow automation.</p>
                 <div class="hero-btns">
-                    <a href="#calculator" class="btn">Calculate Your ROI</a>
-                    <a href="#contact" class="btn btn-secondary">Get Started</a>
+                    <a href="#contact" class="btn" data-track="hero-consultation">Book a Free Consultation</a>
+                    <a href="#services" class="btn btn-secondary" data-track="hero-services">Explore Our Services</a>
                 </div>
             </div>
         </div>
@@ -672,7 +712,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Our Services</h2>
-                <p>Comprehensive social media automation solutions designed to save you time, increase engagement, and drive growth.</p>
+                <p>Practical digital growth services that connect your marketing, website, content, and everyday workflows.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -780,14 +820,15 @@
         <div class="container">
             <div class="section-header">
                 <h2>Our Work</h2>
-                <p>See how we've helped brands transform their social media presence with intelligent automation.</p>
+                <p>Explore the types of digital marketing, web, and automation projects we can help deliver. The examples below are illustrative service scenarios, not published client case studies.</p>
             </div>
+            <div class="portfolio-grid">
                 <div class="portfolio-item"> 
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce Brand"> 
                     <div class="portfolio-overlay"> 
                         <div class="portfolio-info"> 
                             <h3>E-commerce Brand</h3> 
-                            <p>Increased engagement by 240% with automated content strategy</p> 
+                            <p>Illustrative example: a consistent, automated content workflow</p> 
                         </div> 
                     </div> 
                 </div>
@@ -796,7 +837,7 @@
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
                             <h3>Tech Startup</h3>
-                            <p>Reduced response time by 85% with AI chatbot integration</p>
+                            <p>Illustrative example: faster responses with an AI-assisted FAQ flow</p>
                         </div>
                     </div>
                 </div>
@@ -805,7 +846,7 @@
                     <div class="portfolio-overlay">
                         <div class="portfolio-info">
                             <h3>Service Business</h3>
-                            <p>Generated 320% more qualified leads with automated campaigns</p>
+                            <p>Illustrative example: a streamlined lead capture and follow-up journey</p>
                         </div>
                     </div>
                 </div>
@@ -821,9 +862,9 @@
             </div>
             <div class="about-container">
                 <div class="about-content">
-                    <p>At Ai Digital Services (trading as Automation.Ai), we believe that intelligent automation is the future of social media management. Our team of experts combines cutting-edge AI technology with proven marketing strategies to deliver exceptional results for our clients.</p>
-                    <p>We specialize in creating custom automation solutions that save time, increase engagement, and drive measurable growth. Our approach is data-driven, focusing on metrics that matter to your business.</p>
-                    <p>With years of experience in social media marketing and automation technology, we've helped brands of all sizes transform their online presence and achieve their business objectives.</p>
+                    <p>Ai Digital Services (trading as Automation.Ai) helps businesses bring their digital marketing and operations together. We combine hands-on social media marketing, web content strategy, WordPress development, and workflow automation to solve practical business challenges.</p>
+                    <p>Our work focuses on clear goals: a stronger online presence, useful content, better lead capture, and less repetitive admin through well-planned automation.</p>
+                    <p>Every project starts with understanding the business, its audience, and the outcome it needs — then choosing tools and tactics that make sense for that goal.</p>
                     <a href="#contact" class="btn" style="margin-top: 20px;">Work With Us</a>
                 </div>
                 <div class="about-image">
@@ -842,8 +883,30 @@
         </div>
         <div class="contact-container">
             <div class="contact-form">
-                <!-- HubSpot Form Container -->
-                <div id="hubspot-form"></div>
+                <!-- eWork Social Website Lead Capture Form -->
+                <form id="ework-social-form" action="https://api.eworksocial.com/api/public/v1/capture/lc_fJj8o4ea1BSkH2d7_jHL73Vt" method="POST">
+                    <div class="ework-form-field">
+                        <label for="ework-name">Your name <span aria-hidden="true">*</span></label>
+                        <input id="ework-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+                    </div>
+                    <div class="ework-form-field">
+                        <label for="ework-email">Email address <span aria-hidden="true">*</span></label>
+                        <input id="ework-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+                    </div>
+                    <div class="ework-form-field">
+                        <label for="ework-phone">Phone / WhatsApp</label>
+                        <input id="ework-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel">
+                    </div>
+                    <div class="ework-form-field">
+                        <label for="ework-message">How can we help?</label>
+                        <textarea id="ework-message" name="message" placeholder="Tell us a little about what you need…"></textarea>
+                    </div>
+                    <div class="ework-form-honeypot" aria-hidden="true">
+                        <label for="ework-website">Leave this field empty</label>
+                        <input id="ework-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button class="btn ework-form-submit" type="submit">Send Message</button>
+                </form>
             </div>
             
             <div class="contact-info">
@@ -882,309 +945,72 @@
     </div>
 </section>
 
-<!-- HubSpot Form Embed Script - Place before closing </body> tag -->
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-<script>
-// Wait for HubSpot script to load
-function initHubSpotForm() {
-    if (typeof hbspt !== 'undefined' && hbspt.forms) {
-        hbspt.forms.create({
-            region: "na1",
-            portalId: "143905522",
-            formId: "2c7a3733-05a1-45e1-a861-61a15c4f95e0",
-            target: '#hubspot-form',
-            
-            // Custom CSS class
-            cssClass: 'custom-hs-form',
-            
-            // Callback when form renders
-            onFormReady: function($form) {
-                console.log('HubSpot form loaded successfully!');
-                
-                // Remove loading message
-                const loadingMsg = document.querySelector('.form-loading');
-                if (loadingMsg) {
-                    loadingMsg.remove();
-                }
-                
-                // Apply custom styling
-                applyCustomStyles();
-            },
-            
-            // Callback on form submission
-            onFormSubmitted: function($form) {
-                console.log('Form submitted successfully');
-                
-                // Show custom success message
-                setTimeout(function() {
-                    document.getElementById('hubspot-form').innerHTML = `
-                        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88; padding: 30px; border-radius: 8px; text-align: center; animation: slideIn 0.5s ease-out;">
-                            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                            <h3 style="color: #00ff88; margin-bottom: 15px;">Thank You!</h3>
-                            <p style="margin: 0;">We've received your message and will contact you shortly.</p>
-                        </div>
-                    `;
-                }, 500);
-                
-                // Track with Google Analytics
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'form_submission', {
-                        'event_category': 'Contact',
-                        'event_label': 'HubSpot Lead Form'
-                    });
-                }
-                
-                // Track with Facebook Pixel
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead');
-                }
-            }
-        });
-    } else {
-        // Retry if HubSpot hasn't loaded yet
-        setTimeout(initHubSpotForm, 100);
-    }
-}
-
-// Function to apply custom styling
-function applyCustomStyles() {
-    // Add custom styles to form elements
-    const formInputs = document.querySelectorAll('#hubspot-form input, #hubspot-form textarea, #hubspot-form select');
-    formInputs.forEach(input => {
-        if (input.type !== 'submit') {
-            input.style.cssText = `
-                background: rgba(255, 255, 255, 0.05) !important;
-                border: 2px solid rgba(255, 255, 255, 0.2) !important;
-                color: #fff !important;
-                border-radius: 8px !important;
-                padding: 12px 15px !important;
-            `;
-        }
-    });
-}
-
-// Initialize form when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHubSpotForm);
-} else {
-    initHubSpotForm();
-}
-</script>
-
+<!-- eWork Social Website Lead Capture Form Styles -->
 <style>
-/* ============================================
-   HUBSPOT FORM CUSTOM STYLING
-   ============================================ */
-
-/* Container styling */
-#hubspot-form {
+#ework-social-form {
     width: 100%;
-    min-height: 400px;
 }
 
-/* Loading state */
-.form-loading {
-    text-align: center;
-    padding: 40px;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.form-loading i {
-    font-size: 2rem;
-    color: #00ff88;
+#ework-social-form .ework-form-field {
     margin-bottom: 20px;
-    animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+#ework-social-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-/* Form container */
-.custom-hs-form {
-    width: 100% !important;
+#ework-social-form label span {
+    color: #00ff88;
 }
 
-.custom-hs-form .hs-form {
-    font-family: inherit !important;
+#ework-social-form input,
+#ework-social-form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-/* Form fields */
-.custom-hs-form .hs-form-field {
-    margin-bottom: 20px !important;
+#ework-social-form input::placeholder,
+#ework-social-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
-/* Labels */
-.custom-hs-form .hs-form-field label {
-    display: block !important;
-    margin-bottom: 8px !important;
-    font-weight: 500 !important;
-    color: #fff !important;
-    font-size: 14px !important;
-    font-family: inherit !important;
+#ework-social-form input:focus,
+#ework-social-form textarea:focus {
+    outline: none;
+    border-color: #00ff88;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
 }
 
-.custom-hs-form .hs-form-field label .hs-form-required {
-    color: #00ff88 !important;
+#ework-social-form textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
-/* Input fields & Textarea */
-.custom-hs-form .hs-input,
-.custom-hs-form input[type="text"],
-.custom-hs-form input[type="email"],
-.custom-hs-form input[type="tel"],
-.custom-hs-form textarea,
-.custom-hs-form select {
-    width: 100% !important;
-    padding: 12px 15px !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 8px !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: #fff !important;
-    font-size: 16px !important;
-    transition: all 0.3s ease !important;
-    font-family: inherit !important;
-    box-sizing: border-box !important;
+#ework-social-form .ework-form-submit {
+    width: 100%;
+    margin-top: 10px;
 }
 
-.custom-hs-form textarea {
-    min-height: 120px !important;
-    resize: vertical !important;
-}
-
-/* Focus state */
-.custom-hs-form .hs-input:focus,
-.custom-hs-form input:focus,
-.custom-hs-form textarea:focus,
-.custom-hs-form select:focus {
-    outline: none !important;
-    border-color: #00ff88 !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1) !important;
-}
-
-/* Placeholder */
-.custom-hs-form .hs-input::placeholder,
-.custom-hs-form input::placeholder,
-.custom-hs-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Submit button */
-.custom-hs-form .hs-button,
-.custom-hs-form input[type="submit"],
-.custom-hs-form .hs-submit .actions input[type="submit"] {
-    background: linear-gradient(135deg, #00ff88, #00cc6a) !important;
-    color: #000 !important;
-    border: none !important;
-    padding: 15px 40px !important;
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    width: 100% !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    margin-top: 10px !important;
-}
-
-.custom-hs-form .hs-button:hover,
-.custom-hs-form input[type="submit"]:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3) !important;
-}
-
-/* Error messages */
-.custom-hs-form .hs-error-msgs {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 8px 0 0 0 !important;
-}
-
-.custom-hs-form .hs-error-msg {
-    color: #ff4444 !important;
-    font-size: 13px !important;
-    margin-top: 5px !important;
-}
-
-.custom-hs-form .hs-input.error,
-.custom-hs-form .hs-input.invalid {
-    border-color: #ff4444 !important;
-}
-
-/* Success message */
-.custom-hs-form .submitted-message {
-    background: rgba(0, 255, 136, 0.1) !important;
-    border: 1px solid #00ff88 !important;
-    color: #00ff88 !important;
-    padding: 20px !important;
-    border-radius: 8px !important;
-    text-align: center !important;
-    font-size: 16px !important;
-}
-
-/* Checkbox/Radio */
-.custom-hs-form input[type="checkbox"],
-.custom-hs-form input[type="radio"] {
-    width: auto !important;
-    margin-right: 8px !important;
-}
-
-/* Legal consent text */
-.custom-hs-form .hs-richtext,
-.custom-hs-form .legal-consent-container {
-    color: rgba(255, 255, 255, 0.6) !important;
-    font-size: 12px !important;
-}
-
-/* Autofill styling */
-.custom-hs-form input:-webkit-autofill,
-.custom-hs-form input:-webkit-autofill:hover,
-.custom-hs-form input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #fff !important;
-    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
-    transition: background-color 5000s ease-in-out 0s !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-}
-
-/* Animation for success message */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .custom-hs-form .hs-input,
-    .custom-hs-form input,
-    .custom-hs-form textarea {
-        font-size: 16px !important;
-    }
-}
-
-/* Override any iframe styling if present */
-#hubspot-form iframe {
-    width: 100% !important;
-    border: none !important;
-}
-
-/* Field groups */
-.custom-hs-form .hs-form-field > label.hs-form-booleancheckbox-display {
-    display: flex !important;
-    align-items: center !important;
-}
-
-/* Remove HubSpot branding if needed */
-.custom-hs-form .hs-form-booleancheckbox-display span {
-    color: rgba(255, 255, 255, 0.7) !important;
+#ework-social-form .ework-form-honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
 }
 </style>
     
@@ -1280,14 +1106,8 @@ if (document.readyState === 'loading') {
             conversionRateInput.addEventListener('input', calculateImpact);
             averageSaleInput.addEventListener('input', calculateImpact);
             
-            // Form submission
-            const leadForm = document.getElementById('lead-form');
-            leadForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // In a real implementation, this would submit to Zapier
-                alert('Thank you for your interest! We will contact you shortly.');
-                leadForm.reset();
-            });
+            // Lead capture is handled by the HubSpot form in the Contact section.
+            // Keep the calculator focused on estimating potential missed-call revenue.
         });
     </script>
     <!-- Google Consent Banner Structure -->
@@ -1414,28 +1234,36 @@ if (document.readyState === 'loading') {
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookie-consent-banner");
-    const consentChoice = localStorage.getItem("google_consent_choice");
+    let consentChoice = null;
+    try {
+      consentChoice = localStorage.getItem("google_consent_choice");
+    } catch (error) {
+      console.warn("Cookie preferences are unavailable in this browser.");
+    }
 
-    // Display banner if visitor hasn't committed a choice yet
-    if (!consentChoice) {
-      setTimeout(() => {
-        banner.classList.remove("hidden");
-      }, 1000); // 1-second delay for smooth loading entrance
-    } else if (consentChoice === "granted") {
-      executeGoogleUpdate('granted');
+    if (consentChoice === "granted" || consentChoice === "denied") {
+      executeGoogleUpdate(consentChoice);
+    } else if (banner) {
+      setTimeout(() => banner.classList.remove("hidden"), 1000);
     }
   });
 
-  function allConsentGranted() {
-    executeGoogleUpdate('granted');
-    localStorage.setItem("google_consent_choice", "granted");
+  function saveConsentChoice(status) {
+    executeGoogleUpdate(status);
+    try {
+      localStorage.setItem("google_consent_choice", status);
+    } catch (error) {
+      console.warn("Could not save cookie preferences in this browser.");
+    }
     hideBanner();
   }
 
+  function allConsentGranted() {
+    saveConsentChoice("granted");
+  }
+
   function allConsentDenied() {
-    executeGoogleUpdate('denied');
-    localStorage.setItem("google_consent_choice", "denied");
-    hideBanner();
+    saveConsentChoice("denied");
   }
 
   // Forces the legal update parameters straight into Google Consent Mode v2
@@ -1451,12 +1279,50 @@ if (document.readyState === 'loading') {
   }
 
   function hideBanner() {
-    document.getElementById("cookie-consent-banner").classList.add("hidden");
+    const banner = document.getElementById("cookie-consent-banner");
+    if (banner) banner.classList.add("hidden");
   }
 </script>
-        <!-- Other existing scripts or sections may be here -->
+<script>
+  // Accessible mobile navigation toggle.
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".mobile-menu-btn");
+    const menu = document.getElementById("primary-navigation");
+    if (!menuButton || !menu) return;
 
-    <!-- 👇 PASTE THE COOKIE RESET SCRIPT HERE 👇 -->
+    menuButton.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+      menuButton.innerHTML = isOpen
+        ? '<i class="fas fa-times" aria-hidden="true"></i>'
+        : '<i class="fas fa-bars" aria-hidden="true"></i>';
+    });
+
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        menu.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+        menuButton.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+      }
+    });
+  });
+
+  // CTA events are sent through Google Consent Mode.
+  document.addEventListener("click", function (event) {
+    const link = event.target.closest("a[data-track]");
+    if (!link || typeof gtag !== "function") return;
+    gtag("event", "cta_click", {
+      event_category: "engagement",
+      event_label: link.getAttribute("data-track"),
+      link_url: link.href
+    });
+  });
+</script>
+        <!-- Existing site scripts -->
+
+    <!-- Cookie preference controls -->
     <script>
       function openConsentBanner(e) {
         e.preventDefault(); // Stops the page from jumping up to the top
