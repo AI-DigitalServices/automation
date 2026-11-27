@@ -692,8 +692,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Turn Digital Activity Into Business Growth</h1>
-                <p>We help businesses attract the right audience, convert more visitors, and save time with digital marketing, conversion-focused WordPress websites, and practical AI-powered workflow automation.</p>
+                <h1>Digital Growth, Websites & Automation That Move Your Business Forward</h1>
+                <p>AI Digital Services helps businesses attract the right audience, build stronger digital experiences, and simplify everyday operations through strategic marketing, WordPress development, and practical AI-powered automation.</p>
                 <div class="hero-btns">
                     <a href="#contact" class="btn" data-track="hero-consultation">Book a Free Consultation</a>
                     <a href="#services" class="btn btn-secondary" data-track="hero-services">Explore Our Services</a>
@@ -712,50 +712,29 @@
         <div class="container">
             <div class="section-header">
                 <h2>Our Services</h2>
-                <p>Practical digital growth services that connect your marketing, website, content, and everyday workflows.</p>
+                <p>Three connected service pillars to help your business get discovered, convert opportunities, and operate more efficiently.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-bullhorn"></i>
                     </div>
-                    <h3>Social Media Automation</h3>
-                    <p>Automate posting, engagement, and monitoring across all major platforms to maintain a consistent presence 24/7.</p>
+                    <h3>Digital Marketing & Content Growth</h3>
+                    <p>Build visibility and reach the right audience with social media management, SEO content strategy, campaign planning, content creation, and performance reporting.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Performance Analytics</h3>
-                    <p>AI-powered insights and detailed analytics to track performance and optimize your social media strategy.</p>
+                    <h3>Websites & Digital Experience</h3>
+                    <p>Turn more visitors into opportunities with WordPress websites, landing pages, conversion-focused design, website optimization, and clear digital content.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-gears"></i>
                     </div>
-                    <h3>AI Chat Integration</h3>
-                    <p>Implement intelligent chatbots to handle customer inquiries, qualify leads, and provide instant support.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Targeted Campaigns</h3>
-                    <p>Create and automate highly targeted advertising campaigns that reach the right audience at the right time.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Content Repurposing</h3>
-                    <p>Automatically adapt and repurpose content across platforms to maximize reach and minimize effort.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Brand Monitoring</h3>
-                    <p>Continuous monitoring of brand mentions and sentiment across social platforms with automated alerts.</p>
+                    <h3>AI Automation & Business Systems</h3>
+                    <p>Reduce repetitive work and improve follow-up with workflow automation, CRM processes, AI-assisted support, reporting, and connected business tools.</p>
                 </div>
             </div>
         </div>
@@ -862,8 +841,8 @@
             </div>
             <div class="about-container">
                 <div class="about-content">
-                    <p>Ai Digital Services (trading as Automation.Ai) helps businesses bring their digital marketing and operations together. We combine hands-on social media marketing, web content strategy, WordPress development, and workflow automation to solve practical business challenges.</p>
-                    <p>Our work focuses on clear goals: a stronger online presence, useful content, better lead capture, and less repetitive admin through well-planned automation.</p>
+                    <p>AI Digital Services (trading as Automation.Ai) helps businesses grow through connected digital marketing, website experiences, and business automation. We bring together social media strategy, SEO content, WordPress development, and workflow systems to solve practical business challenges.</p>
+                    <p>Our work focuses on clear outcomes: stronger visibility, more effective websites, better lead capture, and less repetitive administration through well-planned automation.</p>
                     <p>Every project starts with understanding the business, its audience, and the outcome it needs — then choosing tools and tactics that make sense for that goal.</p>
                     <a href="#contact" class="btn" style="margin-top: 20px;">Work With Us</a>
                 </div>
@@ -879,7 +858,7 @@
     <div class="container">
         <div class="section-header">
             <h2>Get Started</h2>
-            <p>Ready to transform your social media presence? Contact us today for a free consultation.</p>
+            <p>Tell us what you're working towards. We'll review your enquiry and recommend a practical next step.</p>
         </div>
         <div class="contact-container">
             <div class="contact-form">
@@ -896,6 +875,16 @@
                     <div class="ework-form-field">
                         <label for="ework-phone">Phone / WhatsApp</label>
                         <input id="ework-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel">
+                    </div>
+                    <div class="ework-form-field">
+                        <label for="ework-service-interest">Which service are you interested in? <span aria-hidden="true">*</span></label>
+                        <select id="ework-service-interest" required>
+                            <option value="" selected disabled>Select a service</option>
+                            <option value="Digital Marketing & Content Growth">Digital Marketing & Content Growth</option>
+                            <option value="Websites & Digital Experience">Websites & Digital Experience</option>
+                            <option value="AI Automation & Business Systems">AI Automation & Business Systems</option>
+                            <option value="General Enquiry">I'm not sure yet / General enquiry</option>
+                        </select>
                     </div>
                     <div class="ework-form-field">
                         <label for="ework-message">How can we help?</label>
@@ -968,6 +957,7 @@
 }
 
 #ework-social-form input,
+#ework-social-form select,
 #ework-social-form textarea {
     display: block;
     width: 100%;
@@ -988,11 +978,22 @@
 }
 
 #ework-social-form input:focus,
+#ework-social-form select:focus,
 #ework-social-form textarea:focus {
     outline: none;
     border-color: #00ff88;
     background: rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+#ework-social-form select {
+    appearance: none;
+    cursor: pointer;
+}
+
+#ework-social-form select option {
+    background: #171717;
+    color: #fff;
 }
 
 #ework-social-form textarea {
@@ -1020,7 +1021,7 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <div class="footer-logo">Automation.<span>Ai</span></div>
-                    <p>Helping brands automate, optimize, and grow smarter with AI-powered social media solutions.</p>
+                    <p>Helping businesses grow through digital marketing, better websites, and smarter automation.</p>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
@@ -1037,11 +1038,9 @@
                 <div class="footer-links">
                     <h3>Services</h3>
                     <ul>
-                        <li><a href="#">Social Media Automation</a></li>
-                        <li><a href="#">Performance Analytics</a></li>
-                        <li><a href="#">AI Chat Integration</a></li>
-                        <li><a href="#">Targeted Campaigns</a></li>
-                        <li><a href="#">Brand Monitoring</a></li>
+                        <li><a href="#services">Digital Marketing & Content Growth</a></li>
+                        <li><a href="#services">Websites & Digital Experience</a></li>
+                        <li><a href="#services">AI Automation & Business Systems</a></li>
                         <li><a href="lead-sync-checklist.html">Lead Sync Checklist</a></li>
                         
                     </ul>
@@ -1054,6 +1053,60 @@
     </footer>
 
     <script>
+        // Include the selected service in the existing CRM message field.
+        // This keeps the current eWork Social capture endpoint and supported form fields unchanged.
+        document.addEventListener('DOMContentLoaded', function() {
+            const leadForm = document.getElementById('ework-social-form');
+            if (!leadForm) return;
+
+            const submitButton = leadForm.querySelector('.ework-form-submit');
+            const originalButtonText = submitButton ? submitButton.textContent : 'Send Message';
+            let submissionStarted = false;
+
+            leadForm.addEventListener('submit', function(event) {
+                // Stop repeat clicks while the browser sends the form to eWork Social.
+                if (submissionStarted) {
+                    event.preventDefault();
+                    return;
+                }
+
+                const serviceSelect = document.getElementById('ework-service-interest');
+                const messageField = document.getElementById('ework-message');
+                if (serviceSelect && messageField && serviceSelect.value) {
+                    const serviceLine = 'Service interest: ' + serviceSelect.value;
+                    const existingMessage = messageField.value.trim();
+                    if (!existingMessage.startsWith(serviceLine)) {
+                        messageField.value = existingMessage
+                            ? serviceLine + ' | ' + existingMessage
+                            : serviceLine;
+                    }
+                }
+
+                submissionStarted = true;
+                leadForm.setAttribute('aria-busy', 'true');
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Submitting...';
+                    submitButton.setAttribute('aria-live', 'polite');
+                    submitButton.style.opacity = '0.7';
+                    submitButton.style.cursor = 'wait';
+                }
+            });
+
+            // Restore the button if a visitor returns to this page using browser navigation.
+            window.addEventListener('pageshow', function() {
+                submissionStarted = false;
+                leadForm.removeAttribute('aria-busy');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    submitButton.style.opacity = '';
+                    submitButton.style.cursor = '';
+                }
+            });
+        });
+
         // Calculator functionality
         document.addEventListener('DOMContentLoaded', function() {
             const monthlyCallsInput = document.getElementById('monthly-calls');
